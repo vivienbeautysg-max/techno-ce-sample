@@ -79,7 +79,7 @@ p{margin:0}
 .foot *:focus-visible{outline-color:var(--safety)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* ----- Generic rule (測量線) ----- */
+/* ----- Engineering measurement-line divider ----- */
 .rule, .hero__rule{
   display:flex;align-items:center;gap:1rem;
   padding:0 var(--pad-x);
@@ -88,12 +88,41 @@ p{margin:0}
   letter-spacing:0.12em;text-transform:uppercase;
   color:var(--steel);
 }
-.rule-tag{white-space:nowrap;flex-shrink:0}
-.rule-line{flex:1;height:1px;background:var(--ink);opacity:.25}
+.rule-tag{white-space:nowrap;flex-shrink:0;position:relative}
+.rule-line{
+  flex:1;height:10px;
+  position:relative;
+  --tick-c: rgba(20,48,79,.35);
+  --line-c: rgba(20,48,79,.28);
+  background:transparent;opacity:1;
+}
+/* center hairline */
+.rule-line::before{
+  content:'';position:absolute;left:0;right:0;top:50%;
+  height:1px;background:var(--line-c);
+  transform-origin:left center;transform:scaleX(0);
+  transition:transform 1.1s cubic-bezier(.65,0,.35,1) .15s;
+}
+/* tick marks at both ends */
+.rule-line::after{
+  content:'';position:absolute;top:0;bottom:0;
+  left:0;right:0;
+  background:
+    linear-gradient(var(--tick-c),var(--tick-c)) left / 1px 100% no-repeat,
+    linear-gradient(var(--tick-c),var(--tick-c)) right / 1px 100% no-repeat;
+  transform:scaleY(0);transform-origin:center;
+  transition:transform .35s cubic-bezier(.65,0,.35,1) 0s;
+}
+.rule.is-in .rule-line::before, .hero__rule .rule-line::before{transform:scaleX(1)}
+.rule.is-in .rule-line::after, .hero__rule .rule-line::after{transform:scaleY(1);transition-delay:1.05s}
+/* dark sections (work, clients, about, contact, foot) */
+.rule--light .rule-line, .work .rule-line, .clients .rule-line,
+.about .rule-line, .contact .rule-line{
+  --tick-c: rgba(247,251,253,.35);
+  --line-c: rgba(247,251,253,.22);
+}
 .rule--light{color:var(--steel-mut)}
-.rule--light .rule-line{background:var(--paper);opacity:.3}
 .rule--inverse{color:var(--paper-warm);opacity:.7}
-.rule--inverse .rule-line{background:var(--paper);opacity:.25}
 
 /* ====================================================================
    NAV
@@ -170,7 +199,7 @@ p{margin:0}
 .hero{
   position:relative;
   min-height:100svh;
-  padding:0 var(--pad-x) clamp(2rem,4vw,4rem);
+  padding:0 var(--pad-x) clamp(4.5rem,7vw,6rem);
   display:flex;flex-direction:column;justify-content:flex-end;
   color:var(--paper);
   overflow:hidden;
@@ -269,10 +298,50 @@ p{margin:0}
 .caption-num{color:var(--rust);font-weight:500}
 
 .hero__scroll{
-  position:absolute;left:var(--pad-x);bottom:1.5rem;z-index:2;
+  position:absolute;left:var(--pad-x);bottom:4.6rem;z-index:2;
   font:500 .68rem/1 var(--mono);letter-spacing:.2em;
   color:var(--paper-warm);opacity:.65;
   animation:bob 2.4s ease-in-out infinite;
+}
+
+/* ----- Live project ticker bar ----- */
+.hero__live{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  display:flex;align-items:center;gap:1rem;
+  padding:.85rem var(--pad-x);
+  background:
+    linear-gradient(90deg, rgba(40,118,181,.18), rgba(20,48,79,.6) 30%, rgba(20,48,79,.85));
+  border-top:1px solid rgba(157,196,226,.25);
+  font:500 .68rem/1 var(--mono);
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--paper);
+  overflow:hidden;white-space:nowrap;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+.hero__live-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#6FE08A;
+  box-shadow:0 0 0 0 rgba(111,224,138,.6);
+  animation:livePulse 1.8s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes livePulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(111,224,138,.65)}
+  50%   {box-shadow:0 0 0 10px rgba(111,224,138,0)}
+}
+.hero__live-tag{color:var(--brand-light);font-weight:500;flex-shrink:0}
+.hero__live-sep{color:var(--paper-warm);opacity:.45;flex-shrink:0}
+.hero__live-job{font-weight:500;color:var(--paper);overflow:hidden;text-overflow:ellipsis;min-width:0}
+.hero__live-meta{color:var(--paper-warm);opacity:.85;flex-shrink:0}
+@media (max-width:780px){
+  .hero__live{padding:.7rem 1rem;font-size:.6rem;gap:.5rem;letter-spacing:.08em}
+  .hero__live-meta:last-child{display:none}
+  .hero__live-job{flex:1}
+}
+@media (max-width:520px){
+  .hero__live-meta{display:none}
+  .hero__live-sep:nth-of-type(2){display:none}
 }
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 

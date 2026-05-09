@@ -62,6 +62,19 @@
   },{threshold:0.4});
   counters.forEach(c=>countObs.observe(c));
 
+  // ---------- Rule (measurement line) reveal ----------
+  const rules=$$('.rule:not(.hero__rule)');
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
+    const ruleObs=new IntersectionObserver((es)=>{
+      es.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add('is-in');ruleObs.unobserve(e.target);}
+      });
+    },{threshold:0.5});
+    rules.forEach(r=>ruleObs.observe(r));
+  } else {
+    rules.forEach(r=>r.classList.add('is-in'));
+  }
+
   // ---------- Scroll reveal (with fallbacks) ----------
   const revealTargets=$$('.cap, .stat, .manifesto__lead, .manifesto__body, .creds__certs figure, .about__col, .contact__grid > div');
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
