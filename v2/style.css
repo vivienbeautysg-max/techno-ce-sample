@@ -494,6 +494,13 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:300;letter-spacing:-0.0
   font:400 .72rem/1.5 var(--mono);letter-spacing:.04em;
   flex-wrap:wrap;gap:.5rem;
 }
+.foot__line--legal{
+  margin-top:.7rem;padding-top:.7rem;
+  border-top:1px solid rgba(247,250,252,.08);
+  color:var(--slate-2);
+  font-size:.66rem;letter-spacing:.06em;
+  opacity:.75;
+}
 
 /* ============== Project register modal (shared style; lighter palette) ============== */
 .register{

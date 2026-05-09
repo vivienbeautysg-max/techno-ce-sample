@@ -36,19 +36,28 @@
 
   // ---------- Counter animation (engineer-precision feel) ----------
   const counters=$$('[data-counter]');
+  const fmtNum=(v,decimals=0)=>{
+    if(decimals>0){
+      const fixed=v.toFixed(decimals);
+      const [whole,frac]=fixed.split('.');
+      return parseInt(whole,10).toLocaleString()+'.'+frac;
+    }
+    return Math.round(v).toLocaleString();
+  };
   const animateCount=(el)=>{
-    const target=parseInt(el.dataset.counter,10);
+    const target=parseFloat(el.dataset.counter);
+    const decimals=parseInt(el.dataset.decimals||'0',10);
     el.style.fontVariantNumeric='tabular-nums lining-nums';
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-      el.textContent=target.toLocaleString();return;
+      el.textContent=fmtNum(target,decimals);return;
     }
     const dur=1900;const t0=performance.now();
     const tick=(t)=>{
       const p=Math.min((t-t0)/dur,1);
-      const eased=1-Math.pow(1-p,4); /* quartic-out: settles, not blasts */
-      el.textContent=Math.round(target*eased).toLocaleString();
+      const eased=1-Math.pow(1-p,4);
+      el.textContent=fmtNum(target*eased,decimals);
       if(p<1) requestAnimationFrame(tick);
-      else el.textContent=target.toLocaleString();
+      else el.textContent=fmtNum(target,decimals);
     };
     requestAnimationFrame(tick);
   };
