@@ -3,4 +3,10 @@ package.json
 package-lock.json
 _qa.js
 qa-*.jpg
+qa-*.png
+r1-*.jpg
+r2-*.jpg
+r3-*.jpg
+aes-*.jpg
+final-*.jpg
 .DS_Store
