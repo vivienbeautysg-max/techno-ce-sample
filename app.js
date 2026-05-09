@@ -35,6 +35,9 @@
   const counters=$$('[data-counter]');
   const animateCount=(el)=>{
     const target=parseInt(el.dataset.counter,10);
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+      el.textContent=target;return;
+    }
     const dur=1400;const t0=performance.now();
     const tick=(t)=>{
       const p=Math.min((t-t0)/dur,1);
@@ -54,18 +57,24 @@
   },{threshold:0.4});
   counters.forEach(c=>countObs.observe(c));
 
-  // ---------- Scroll reveal ----------
+  // ---------- Scroll reveal (with fallbacks) ----------
   const revealTargets=$$('.cap, .stat, .manifesto__lead, .manifesto__body, .creds__certs figure, .about__col, .contact__grid > div');
-  revealTargets.forEach(el=>el.classList.add('reveal'));
-  const revealObs=new IntersectionObserver((entries)=>{
-    entries.forEach((e,i)=>{
-      if(e.isIntersecting){
-        setTimeout(()=>e.target.classList.add('is-in'), i*60);
-        revealObs.unobserve(e.target);
-      }
-    });
-  },{threshold:0.15});
-  revealTargets.forEach(t=>revealObs.observe(t));
+  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reducedMotion || !('IntersectionObserver' in window)){
+    revealTargets.forEach(el=>el.classList.add('is-in'));
+  } else {
+    revealTargets.forEach(el=>el.classList.add('reveal'));
+    const revealObs=new IntersectionObserver((entries)=>{
+      entries.forEach((e,i)=>{
+        if(e.isIntersecting){
+          setTimeout(()=>e.target.classList.add('is-in'), i*60);
+          revealObs.unobserve(e.target);
+        }
+      });
+    },{threshold:0.08, rootMargin:'0px 0px -5% 0px'});
+    revealTargets.forEach(t=>revealObs.observe(t));
+    setTimeout(()=>revealTargets.forEach(t=>t.classList.add('is-in')), 4000);
+  }
 
   // ---------- Projects data binding (full register modal) ----------
   let projectData=null;
@@ -78,6 +87,7 @@
   };
   const openRegister=async()=>{
     const data=await loadProjects();
+    const trigger=document.activeElement;
     const dlg=document.createElement('div');
     dlg.className='register';
     dlg.innerHTML=`
@@ -87,7 +97,7 @@
             <span class="register__tag">FULL PROJECT REGISTER</span>
             <h2 id="regTitle">${data.projects.length} projects · S$${(data.projects.reduce((s,p)=>s+p.value,0)/1e6).toFixed(1)}M total</h2>
           </div>
-          <button class="register__close" aria-label="Close">CLOSE ✕</button>
+          <button class="register__close" type="button">CLOSE <span aria-hidden="true">✕</span></button>
         </header>
         <div class="register__filters">
           ${['all','demolition','civil','piling','landscape','road'].map(s=>`<button data-scope="${s}" class="${s==='all'?'is-on':''}">${s.toUpperCase()}</button>`).join('')}
@@ -109,14 +119,26 @@
     document.body.appendChild(dlg);
     document.body.style.overflow='hidden';
     requestAnimationFrame(()=>dlg.classList.add('is-open'));
+    const focusables=()=>[...dlg.querySelectorAll('button,a[href],[tabindex]:not([tabindex="-1"])')].filter(el=>!el.disabled);
     const close=()=>{
       dlg.classList.remove('is-open');
       document.body.style.overflow='';
-      setTimeout(()=>dlg.remove(),300);
+      setTimeout(()=>{dlg.remove();trigger&&trigger.focus&&trigger.focus();},300);
+      document.removeEventListener('keydown',onKey);
     };
+    const onKey=(e)=>{
+      if(e.key==='Escape') close();
+      else if(e.key==='Tab'){
+        const f=focusables();if(!f.length) return;
+        const first=f[0],last=f[f.length-1];
+        if(e.shiftKey && document.activeElement===first){last.focus();e.preventDefault();}
+        else if(!e.shiftKey && document.activeElement===last){first.focus();e.preventDefault();}
+      }
+    };
+    document.addEventListener('keydown',onKey);
     dlg.querySelector('.register__close').addEventListener('click',close);
     dlg.addEventListener('click',e=>{if(e.target===dlg) close();});
-    document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',esc);}});
+    setTimeout(()=>{const f=focusables();f[0]&&f[0].focus();},50);
     dlg.querySelectorAll('.register__filters button').forEach(b=>{
       b.addEventListener('click',()=>{
         dlg.querySelectorAll('.register__filters button').forEach(x=>x.classList.remove('is-on'));

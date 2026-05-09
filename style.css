@@ -49,6 +49,23 @@ h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:500;letter-spacing:-
 p{margin:0}
 ::selection{background:var(--rust);color:var(--paper)}
 
+/* ----- Skip link & focus-visible ----- */
+.skip{
+  position:absolute;left:1rem;top:-3rem;z-index:200;
+  background:var(--ink);color:var(--paper);
+  padding:.7rem 1rem;font:500 .75rem/1 var(--mono);
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:top .2s ease;
+}
+.skip:focus{top:1rem}
+*:focus-visible{outline:2px solid var(--rust);outline-offset:3px;border-radius:1px}
+.nav.is-pinned a:focus-visible,
+.nav:not(.is-pinned) a:focus-visible{outline-color:var(--safety)}
+.work *:focus-visible,.clients *:focus-visible,
+.about *:focus-visible,.contact *:focus-visible,
+.foot *:focus-visible{outline-color:var(--safety)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
 /* ----- Generic rule (測量線) ----- */
 .rule, .hero__rule{
   display:flex;align-items:center;gap:1rem;
@@ -163,10 +180,11 @@ p{margin:0}
   position:absolute;inset:0;
   background:
     linear-gradient(180deg,
-      rgba(14,20,19,.55) 0%,
-      rgba(14,20,19,.15) 35%,
-      rgba(14,20,19,.05) 55%,
-      rgba(14,20,19,.85) 100%);
+      rgba(14,20,19,.6) 0%,
+      rgba(14,20,19,.25) 30%,
+      rgba(14,20,19,.45) 60%,
+      rgba(14,20,19,.92) 100%),
+    radial-gradient(ellipse at 25% 75%, rgba(14,20,19,.5) 0%, rgba(14,20,19,0) 60%);
 }
 
 .hero__rule{
@@ -464,11 +482,20 @@ p{margin:0}
   width:100%;border-collapse:collapse;
   font:500 .85rem/1 var(--mono);
 }
-.creds__table td{
+.creds__table thead th{
+  text-align:left;padding:.5rem;
+  font:500 .65rem/1 var(--mono);
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--steel);
+  border-bottom:1px solid rgba(14,20,19,.3);
+}
+.creds__table thead th:last-child{text-align:right}
+.creds__table td, .creds__table tbody th{
   padding:.85rem .5rem;
   border-bottom:1px dashed rgba(14,20,19,.18);
+  text-align:left;
 }
-.creds__table td:first-child{color:var(--rust);width:5rem}
+.creds__table tbody th{color:var(--rust-deep);width:5rem;font-weight:500}
 .creds__table td:last-child{text-align:right;color:var(--steel)}
 .creds__table b{color:var(--ink);font-weight:500}
 

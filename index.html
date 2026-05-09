@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-SG">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<a class="skip" href="#top">Skip to main content</a>
+
 <!-- ==================== NAV ==================== -->
 <header class="nav" id="nav">
   <a class="nav__logo" href="#top">
@@ -24,7 +26,7 @@
     <a href="#work">Selected Work</a>
     <a href="#credentials">Credentials</a>
     <a href="#about">About</a>
-    <a href="v2/" class="nav__variant" title="See alternate design — Variant B">⇆ B</a>
+    <a href="v2/" class="nav__variant" aria-label="View alternate design, Variant B"><span aria-hidden="true">⇆ B</span></a>
     <a href="#contact" class="nav__cta">Get a Quote →</a>
   </nav>
   <button class="nav__burger" aria-label="Menu" id="burger"><span></span><span></span></button>
@@ -81,20 +83,20 @@
   </div>
 
   <div class="receipts__grid">
-    <div class="stat">
-      <div class="stat__num"><span data-counter="23">0</span><sup>+</sup></div>
+    <div class="stat" aria-label="24 plus years">
+      <div class="stat__num" aria-hidden="true"><span data-counter="24">0</span><sup>+</sup></div>
       <div class="stat__lbl">Years on site, since 2002</div>
     </div>
-    <div class="stat">
-      <div class="stat__num"><span data-counter="33">0</span><sup>+</sup></div>
+    <div class="stat" aria-label="34 projects">
+      <div class="stat__num" aria-hidden="true"><span data-counter="34">0</span></div>
       <div class="stat__lbl">Projects delivered &amp; ongoing</div>
     </div>
-    <div class="stat">
-      <div class="stat__num">S$<span data-counter="94">0</span>M<sup>+</sup></div>
+    <div class="stat" aria-label="80.9 million Singapore dollars">
+      <div class="stat__num" aria-hidden="true">S$<span data-counter="80">0</span>.9M</div>
       <div class="stat__lbl">In contract value across portfolio</div>
     </div>
-    <div class="stat">
-      <div class="stat__num"><span data-counter="6">0</span></div>
+    <div class="stat" aria-label="6 BCA workheads, all current">
+      <div class="stat__num" aria-hidden="true"><span data-counter="6">0</span></div>
       <div class="stat__lbl">BCA workheads, all current</div>
     </div>
   </div>
@@ -113,7 +115,7 @@
       From the demolition of the <em>Bedok NEWater Factory</em> to the timber pavilions at <em>Bay South</em>, Techno&nbsp;CE moves between the heavy and the delicate without changing gear.
     </p>
     <p class="manifesto__body">
-      Twenty-three years on Singapore's sites — sheet piling for the country's reservoirs, earthworks for its golf clubs, demolition for its pumping stations, and the quiet finishing on its parks. We are ten people. We work for the agencies that build the country.
+      Twenty-four years on Singapore's sites — sheet piling for the country's reservoirs, earthworks for its golf clubs, demolition for its pumping stations, and the quiet finishing on its parks. We are ten people. We work for the agencies that build the country.
     </p>
   </div>
 </section>
@@ -260,7 +262,7 @@
       <div class="card__sum">
         <span class="card__sum-num">+26</span>
         <span class="card__sum-lbl">More projects across<br>PUB · NParks · JTC · LTA · MOE · Sentosa Dev · Keppel · NTU · YTL PowerSeraya</span>
-        <a href="#" class="card__sum-link" data-action="register">Open full register →</a>
+        <button type="button" class="card__sum-link" data-action="register">Open full register <span aria-hidden="true">→</span></button>
       </div>
     </article>
 
@@ -312,21 +314,29 @@
     </div>
 
     <div class="creds__table">
-      <h3>BCA Registered Workheads</h3>
-      <table>
-        <tr><td>CW01</td><td>General Building</td><td><b>C3</b></td><td>2027/07</td></tr>
-        <tr><td>CW02</td><td>Civil Engineering</td><td><b>B2</b></td><td>2027/07</td></tr>
-        <tr><td>CR03</td><td>Demolition</td><td>Single</td><td>2027/07</td></tr>
-        <tr><td>CR07</td><td>Cable / Pipe Laying</td><td>L1</td><td>2027/07</td></tr>
-        <tr><td>CR08</td><td>Piling Works</td><td>L1</td><td>2027/07</td></tr>
-        <tr><td>CR13</td><td>Waterproofing</td><td>L1</td><td>2027/07</td></tr>
+      <h3 id="bca-workheads">BCA Registered Workheads</h3>
+      <table aria-labelledby="bca-workheads">
+        <caption class="sr-only">Six BCA-registered workheads, all valid until July 2027.</caption>
+        <thead><tr><th scope="col">Code</th><th scope="col">Workhead</th><th scope="col">Grade</th><th scope="col">Valid until</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">CW01</th><td>General Building</td><td><b>C3</b></td><td>2027/07</td></tr>
+          <tr><th scope="row">CW02</th><td>Civil Engineering</td><td><b>B2</b></td><td>2027/07</td></tr>
+          <tr><th scope="row">CR03</th><td>Demolition</td><td>Single</td><td>2027/07</td></tr>
+          <tr><th scope="row">CR07</th><td>Cable / Pipe Laying</td><td>L1</td><td>2027/07</td></tr>
+          <tr><th scope="row">CR08</th><td>Piling Works</td><td>L1</td><td>2027/07</td></tr>
+          <tr><th scope="row">CR13</th><td>Waterproofing</td><td>L1</td><td>2027/07</td></tr>
+        </tbody>
       </table>
 
-      <h3 style="margin-top:2rem">Licensed Builder</h3>
-      <table>
-        <tr><td>GB1</td><td>General Builder Class 1</td><td>24/12/2026</td></tr>
-        <tr><td>SB(PW)</td><td>Specialist · Piling Works</td><td>07/11/2027</td></tr>
-        <tr><td>SB(SS)</td><td>Specialist · Structural Steelwork</td><td>20/11/2028</td></tr>
+      <h3 id="lic-builder" style="margin-top:2rem">Licensed Builder</h3>
+      <table aria-labelledby="lic-builder">
+        <caption class="sr-only">Three BCA Licensed Builder licences.</caption>
+        <thead><tr><th scope="col">Licence</th><th scope="col">Description</th><th scope="col">Valid until</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">GB1</th><td>General Builder Class 1</td><td>24/12/2026</td></tr>
+          <tr><th scope="row">SB(PW)</th><td>Specialist · Piling Works</td><td>07/11/2027</td></tr>
+          <tr><th scope="row">SB(SS)</th><td>Specialist · Structural Steelwork</td><td>20/11/2028</td></tr>
+        </tbody>
       </table>
 
       <p class="creds__verify">

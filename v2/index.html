@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-SG">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -13,17 +13,20 @@
 </head>
 <body>
 
+<a class="skip" href="#top">Skip to main content</a>
+
 <header class="nav" id="nav">
   <a class="nav__logo" href="#top">Techno&nbsp;CE</a>
   <span class="nav__divider">/</span>
   <span class="nav__loc">Singapore · Civil Engineering</span>
-  <nav class="nav__links">
-    <a href="../">↩ Variant&nbsp;A</a>
+  <nav class="nav__links" id="navLinks">
+    <a href="../" aria-label="Switch to Variant A design"><span aria-hidden="true">↩</span> Variant&nbsp;A</a>
     <a href="#works">Works</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#about">Studio</a>
     <a href="#contact">Contact</a>
   </nav>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
 </header>
 
 <main id="top">
@@ -31,9 +34,9 @@
 <!-- ========== HERO ========== -->
 <section class="hero">
   <div class="hero__art">
-    <img class="hero__img is-on" src="../img/hero/03-kingfisher-pavilion.jpg" alt="Kingfisher Wetland pavilion at Bay South" />
-    <img class="hero__img" src="../img/projects/kingfisher-bridge.png" alt="Kingfisher Wetland bridge" />
-    <img class="hero__img" src="../img/projects/sentosa-pavilion.jpg" alt="Singapore Island Country Club pavilion" />
+    <img class="hero__img is-on" src="../img/hero/03-kingfisher-pavilion.jpg" alt="Kingfisher Wetland pavilion at Bay South, Gardens by the Bay — built by Techno CE" />
+    <img class="hero__img" src="../img/projects/kingfisher-bridge.png" alt="" aria-hidden="true" />
+    <img class="hero__img" src="../img/projects/sentosa-pavilion.jpg" alt="" aria-hidden="true" />
   </div>
   <div class="hero__text">
     <span class="hero__eyebrow">— Estd 2002 · Singapore</span>
@@ -42,13 +45,13 @@
       <span class="hero__h-line"><i>of civil&nbsp;engineering.</i></span>
     </h1>
     <p class="hero__sub">
-      For parks &amp; gardens, golf courses, reservoirs and the things underneath. Twenty-three years on Singapore's sites, working hand-in-hand with the agencies that build the country.
+      For parks &amp; gardens, golf courses, reservoirs and the things underneath. Twenty-four years on Singapore's sites, working hand-in-hand with the agencies that build the country.
     </p>
-    <div class="hero__chips">
-      <span>BCA CW02 B2</span><span>·</span>
-      <span>CW01 C3</span><span>·</span>
-      <span>ISO 9001 / 14001</span><span>·</span>
-      <span>Green &amp; Gracious Merit</span>
+    <div class="hero__chips" role="list">
+      <span role="listitem">BCA CW02 B2</span><span aria-hidden="true">·</span>
+      <span role="listitem">CW01 C3</span><span aria-hidden="true">·</span>
+      <span role="listitem">ISO 9001 / 14001</span><span aria-hidden="true">·</span>
+      <span role="listitem">Green &amp; Gracious Merit</span>
     </div>
   </div>
 </section>
@@ -175,7 +178,7 @@
     </div>
   </article>
 
-  <a class="works__more" href="#" data-action="register">See the full register, all 33 ↗</a>
+  <button class="works__more" type="button" data-action="register">See the full register, all 34 <span aria-hidden="true">↗</span></button>
 </section>
 
 <!-- ========== CAPABILITIES ========== -->
@@ -203,9 +206,9 @@
     <span class="sec-head__meta">As of May 2026</span>
   </header>
   <div class="num__grid">
-    <div><b>23<sup>+</sup></b><span>years on site, since 2002</span></div>
-    <div><b>33<sup>+</sup></b><span>projects delivered &amp; ongoing</span></div>
-    <div><b>S$94M<sup>+</sup></b><span>contract value across portfolio</span></div>
+    <div><b>24<sup>+</sup></b><span>years on site, since 2002</span></div>
+    <div><b>34</b><span>projects delivered &amp; ongoing</span></div>
+    <div><b>S$80.9<sup>M</sup></b><span>contract value across portfolio</span></div>
     <div><b>10</b><span>people, all on payroll</span></div>
   </div>
   <p class="num__cap">A small studio. Long timesheets. We work for the agencies that build Singapore.</p>
