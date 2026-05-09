@@ -3,6 +3,9 @@
   const $=(s,r=document)=>r.querySelector(s);
   const $$=(s,r=document)=>[...r.querySelectorAll(s)];
 
+  // ---------- Hero mask-reveal on load ----------
+  requestAnimationFrame(()=>document.querySelector('.hero')?.classList.add('is-loaded'));
+
   // ---------- Hero crossfade ----------
   const hImgs=$$('.hero__img');
   let hi=0;

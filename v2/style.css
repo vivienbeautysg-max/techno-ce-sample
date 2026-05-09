@@ -144,7 +144,15 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:300;letter-spacing:-0.0
   letter-spacing:-0.035em;
   color:var(--ink);
 }
-.hero__h-line{display:block}
+.hero__h-line{
+  display:block;
+  clip-path:inset(0 0 100% 0);
+  transform:translateY(.4em);
+  transition:clip-path 1.1s cubic-bezier(.77,0,.18,1),
+             transform 1.1s cubic-bezier(.77,0,.18,1);
+}
+.hero.is-loaded .hero__h-line{clip-path:inset(0);transform:none}
+.hero.is-loaded .hero__h-line:nth-child(2){transition-delay:.18s}
 .hero__h i{
   font-family:var(--serif);
   font-style:italic;color:var(--brand-deep);
@@ -343,13 +351,16 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:300;letter-spacing:-0.0
 }
 .num__grid > div:last-child{border-right:none}
 .num__grid b{
-  font-family:var(--display);font-weight:200;
-  font-size:clamp(3.5rem,7vw,6rem);line-height:.9;
-  letter-spacing:-0.04em;color:var(--ink);
+  font-family:var(--display);font-weight:340;
+  font-size:clamp(3.5rem,7.4vw,6.4rem);line-height:.92;
+  letter-spacing:-0.045em;color:var(--ink);
+  font-variant-numeric:tabular-nums lining-nums;
+  font-feature-settings:"tnum","lnum";
 }
 .num__grid sup{
-  font-size:.32em;color:var(--brand);
-  vertical-align:0.6em;font-weight:600;
+  font-size:.5em;color:var(--brand);
+  vertical-align:0.55em;font-weight:300;
+  letter-spacing:-0.02em;
 }
 .num__grid span{
   font:400 .8rem/1.4 var(--mono);
@@ -362,6 +373,37 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:300;letter-spacing:-0.0
   max-width:42rem;margin:3rem auto 0;
   text-align:center;padding:0 var(--pad-x);
   letter-spacing:-0.01em;
+}
+
+/* ----- V2 Pull-quote signature moment ----- */
+.pullquote{
+  margin:0;
+  padding:clamp(5rem,9vw,9rem) var(--pad-x);
+  text-align:center;
+  background:var(--paper);
+  border-top:1px solid var(--brand);
+  border-bottom:1px solid var(--brand);
+}
+.pullquote blockquote{
+  margin:0;
+  font-family:var(--display);
+  font-weight:200;
+  font-size:clamp(2rem,5vw,4.4rem);
+  line-height:1.12;letter-spacing:-0.035em;
+  color:var(--ink);
+  max-width:48rem;margin-inline:auto;
+}
+.pullquote blockquote em{
+  font-family:var(--serif);
+  font-weight:300;font-style:italic;
+  color:var(--brand-deep);
+  letter-spacing:-0.025em;
+}
+.pullquote figcaption{
+  margin-top:clamp(1.5rem,2.5vw,2.2rem);
+  font:400 .72rem/1 var(--mono);
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--slate);
 }
 
 /* ============== CREDENTIALS ============== */

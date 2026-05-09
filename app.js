@@ -172,19 +172,20 @@
     el.addEventListener('click',e=>{e.preventDefault();openRegister();});
   });
 
-  // ---------- Smooth burger (mobile placeholder) ----------
-  const burger=$('#burger');
-  if(burger){
+  // ---------- Mobile burger ----------
+  const burger=$('#burger'),navLinks=$('.nav__links');
+  if(burger&&navLinks){
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','Open menu');
     burger.addEventListener('click',()=>{
-      const links=$('.nav__links');
-      links.style.display = links.style.display==='flex'?'none':'flex';
-      links.style.position='fixed';
-      links.style.top='4rem';links.style.right='1rem';
-      links.style.flexDirection='column';
-      links.style.background='var(--paper)';
-      links.style.padding='1.5rem';
-      links.style.gap='1rem';
-      links.style.border='1px solid rgba(0,0,0,.1)';
+      const open=navLinks.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded',open);
+      burger.setAttribute('aria-label',open?'Close menu':'Open menu');
     });
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      navLinks.classList.remove('is-open');
+      burger.setAttribute('aria-expanded','false');
+      burger.setAttribute('aria-label','Open menu');
+    }));
   }
 })();

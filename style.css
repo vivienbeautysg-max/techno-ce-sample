@@ -190,8 +190,18 @@ p{margin:0}
 .nav__variant:hover{opacity:1;background:currentColor;color:var(--paper)!important}
 .nav.is-pinned .nav__variant:hover{color:var(--paper)!important}
 .nav__variant::after{display:none!important}
-.nav__burger{display:none;flex-direction:column;gap:5px}
-.nav__burger span{width:22px;height:1.5px;background:currentColor}
+.nav__burger{
+  display:none;flex-direction:column;gap:5px;
+  width:42px;height:42px;align-items:center;justify-content:center;
+  padding:0;border:1px solid currentColor;
+  border-radius:2px;flex-shrink:0;
+}
+.nav__burger span{
+  width:18px;height:1.6px;background:currentColor;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.nav__burger[aria-expanded="true"] span:first-child{transform:translateY(6.5px) rotate(45deg)}
+.nav__burger[aria-expanded="true"] span:last-child{transform:translateY(-6.5px) rotate(-45deg)}
 
 /* ====================================================================
    HERO
@@ -930,7 +940,16 @@ p{margin:0}
   .foot__col--end{align-items:flex-start;text-align:left}
 }
 @media (max-width: 720px){
-  .nav__links{display:none}
+  .nav__links{
+    display:none;position:fixed;top:4rem;right:1rem;
+    flex-direction:column;gap:1rem;
+    background:var(--paper);
+    padding:1.5rem 2rem;
+    border:1px solid rgba(20,48,79,.18);
+    box-shadow:0 24px 60px -20px rgba(20,48,79,.35);
+  }
+  .nav__links.is-open{display:flex}
+  .nav__links a{font-size:.85rem;padding:.5rem 0}
   .nav__burger{display:flex}
   .nav__name{display:none}
   .receipts__grid{grid-template-columns:1fr}
@@ -940,9 +959,10 @@ p{margin:0}
   .clients__grid{grid-template-columns:repeat(2,1fr)}
   .clients__grid span{padding:1.2rem .8rem;font-size:.95rem}
   .foot__cols{grid-template-columns:1fr;gap:1.5rem}
-  .hero{min-height:90svh;padding-bottom:1.5rem}
+  .hero{min-height:95svh;padding-bottom:5.5rem}
   .hero__rule{margin-top:5rem}
-  .hero__copy{padding-top:3rem}
+  .hero__copy{padding-top:2rem;padding-bottom:1rem}
+  .hero__caption{margin-top:.8rem}
   .hero__title{font-size:clamp(2.6rem,11vw,4.5rem)}
   .hero__badges{max-width:100%;gap:.4rem}
   .hero__badges span{font-size:.6rem;padding:.45rem .55rem}
