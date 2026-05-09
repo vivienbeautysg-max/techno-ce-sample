@@ -122,6 +122,16 @@ p{margin:0}
   border:1px solid var(--rust);
 }
 .nav__cta:hover{background:var(--rust-deep);border-color:var(--rust-deep)}
+.nav__variant{
+  font:500 .68rem/1 var(--mono)!important;
+  letter-spacing:.12em;
+  border:1px solid currentColor;
+  padding:.55rem .65rem!important;
+  opacity:.85;transition:opacity .25s ease,background .25s ease,color .25s ease;
+}
+.nav__variant:hover{opacity:1;background:currentColor;color:var(--paper)!important}
+.nav.is-pinned .nav__variant:hover{color:var(--paper)!important}
+.nav__variant::after{display:none!important}
 .nav__burger{display:none;flex-direction:column;gap:5px}
 .nav__burger span{width:22px;height:1.5px;background:currentColor}
 
@@ -603,6 +613,103 @@ p{margin:0}
 }
 
 /* ====================================================================
+   FULL PROJECT REGISTER (modal)
+   ==================================================================== */
+.register{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(14,20,19,.85);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;transition:opacity .3s ease;
+}
+.register.is-open{opacity:1}
+.register__sheet{
+  width:100%;max-width:1280px;max-height:92vh;
+  background:var(--paper);
+  display:flex;flex-direction:column;
+  transform:translateY(40px);transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  border-top:4px solid var(--rust);
+}
+.register.is-open .register__sheet{transform:none}
+.register__head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding:1.5rem 2rem 1rem;
+  border-bottom:1px solid rgba(14,20,19,.15);
+}
+.register__tag{
+  font:500 .7rem/1 var(--mono);letter-spacing:.18em;
+  color:var(--rust);text-transform:uppercase;
+}
+.register__head h2{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(1.4rem,2.5vw,2.2rem);
+  letter-spacing:-0.02em;margin-top:.4rem;
+}
+.register__close{
+  font:500 .75rem/1 var(--mono);letter-spacing:.12em;
+  padding:.7rem 1rem;border:1px solid var(--ink);
+  transition:background .25s ease, color .25s ease;
+}
+.register__close:hover{background:var(--ink);color:var(--paper)}
+.register__filters{
+  display:flex;gap:.5rem;flex-wrap:wrap;
+  padding:1rem 2rem;
+  border-bottom:1px solid rgba(14,20,19,.15);
+}
+.register__filters button{
+  font:500 .7rem/1 var(--mono);letter-spacing:.1em;
+  padding:.55rem .85rem;
+  border:1px solid rgba(14,20,19,.25);
+  color:var(--steel);
+  transition:all .2s ease;
+}
+.register__filters button:hover{color:var(--ink);border-color:var(--ink)}
+.register__filters button.is-on{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+.register__list{
+  flex:1;overflow-y:auto;
+  padding:0 2rem 1rem;
+}
+.reg-row{
+  display:grid;
+  grid-template-columns:6rem 1fr 12rem 7rem 8rem;
+  gap:1rem;align-items:center;
+  padding:1rem 0;
+  border-bottom:1px dashed rgba(14,20,19,.15);
+  font-size:.85rem;
+  transition:background .2s ease;
+}
+.reg-row:hover{background:var(--paper-warm);margin:0 -1rem;padding-left:1rem;padding-right:1rem}
+.reg-row__year{font:500 .8rem/1 var(--mono);color:var(--rust);letter-spacing:.05em}
+.reg-row__title{font-family:var(--display);font-size:1rem;line-height:1.3;font-weight:400;color:var(--ink)}
+.reg-row__owner{color:var(--steel);font-size:.8rem}
+.reg-row__value{font:500 .85rem/1 var(--mono);color:var(--ink);text-align:right}
+.reg-row__status{font:500 .65rem/1 var(--mono);letter-spacing:.1em;text-align:right}
+.reg-row__status--ongoing{color:var(--moss)}
+.reg-row__status--completed{color:var(--steel-mut)}
+.register__foot{
+  padding:1rem 2rem;
+  border-top:1px solid rgba(14,20,19,.15);
+  font:500 .75rem/1 var(--mono);color:var(--steel);
+  display:flex;justify-content:space-between;
+}
+.register__foot a{color:var(--rust);border-bottom:1px solid currentColor}
+@media (max-width: 720px){
+  .register__sheet{max-height:100vh;height:100vh}
+  .register__head{padding:1rem;flex-direction:column;align-items:flex-start;gap:1rem}
+  .register__filters{padding:.75rem 1rem;gap:.35rem}
+  .register__filters button{padding:.5rem .65rem;font-size:.65rem}
+  .register__list{padding:0 1rem 1rem}
+  .reg-row{grid-template-columns:5rem 1fr;grid-template-rows:auto auto auto;gap:.3rem}
+  .reg-row__title{grid-column:2}
+  .reg-row__owner{grid-column:2;font-size:.75rem}
+  .reg-row__value{grid-column:1;text-align:left;color:var(--rust)}
+  .reg-row__status{grid-column:2;text-align:left}
+  .register__foot{padding:.75rem 1rem;flex-direction:column;gap:.25rem}
+}
+
+/* ====================================================================
    SCROLL REVEAL
    ==================================================================== */
 .reveal{
@@ -636,11 +743,30 @@ p{margin:0}
 @media (max-width: 720px){
   .nav__links{display:none}
   .nav__burger{display:flex}
+  .nav__name{display:none}
   .receipts__grid{grid-template-columns:1fr}
   .caps__grid{grid-template-columns:1fr}
+  .cap{min-height:auto}
   .creds__certs{grid-template-columns:1fr 1fr}
   .clients__grid{grid-template-columns:repeat(2,1fr)}
+  .clients__grid span{padding:1.2rem .8rem;font-size:.95rem}
   .foot__cols{grid-template-columns:1fr;gap:1.5rem}
-  .hero__badges{max-width:100%}
-  .hero__caption{align-items:flex-start;text-align:left}
+  .hero{min-height:90svh;padding-bottom:1.5rem}
+  .hero__rule{margin-top:5rem}
+  .hero__copy{padding-top:3rem}
+  .hero__title{font-size:clamp(2.6rem,11vw,4.5rem)}
+  .hero__badges{max-width:100%;gap:.4rem}
+  .hero__badges span{font-size:.6rem;padding:.45rem .55rem}
+  .hero__caption{align-items:flex-start;text-align:left;max-width:100%}
+  .hero__meta{flex-direction:column;align-items:flex-start}
+  .hero__scroll{display:none}
+  .stat__num{font-size:clamp(3rem,16vw,5rem)}
+  .manifesto__lead{font-size:clamp(1.4rem,5vw,2rem)}
+  .work__rail{padding:1rem var(--pad-x) 3rem}
+  .card{flex:0 0 80vw}
+  .creds__verify{font-size:.7rem}
+  .contact__hero{font-size:clamp(3rem,14vw,5rem)}
+  .contact__cta{flex-direction:column;align-items:flex-start;gap:.5rem;font-size:1.05rem}
+  .about__col{padding:2rem 1rem}
+  .about__col h3{font-size:clamp(1.6rem,7vw,2.2rem)}
 }

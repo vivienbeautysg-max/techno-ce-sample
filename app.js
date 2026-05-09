@@ -67,6 +67,71 @@
   },{threshold:0.15});
   revealTargets.forEach(t=>revealObs.observe(t));
 
+  // ---------- Projects data binding (full register modal) ----------
+  let projectData=null;
+  const fmt=v=>'S$'+(v/1000>=1000?(v/1000000).toFixed(2)+'M':Math.round(v/1000)+'K');
+  const loadProjects=async()=>{
+    if(projectData) return projectData;
+    const r=await fetch('projects.json');
+    projectData=await r.json();
+    return projectData;
+  };
+  const openRegister=async()=>{
+    const data=await loadProjects();
+    const dlg=document.createElement('div');
+    dlg.className='register';
+    dlg.innerHTML=`
+      <div class="register__sheet" role="dialog" aria-modal="true" aria-labelledby="regTitle">
+        <header class="register__head">
+          <div>
+            <span class="register__tag">FULL PROJECT REGISTER</span>
+            <h2 id="regTitle">${data.projects.length} projects · S$${(data.projects.reduce((s,p)=>s+p.value,0)/1e6).toFixed(1)}M total</h2>
+          </div>
+          <button class="register__close" aria-label="Close">CLOSE ✕</button>
+        </header>
+        <div class="register__filters">
+          ${['all','demolition','civil','piling','landscape','road'].map(s=>`<button data-scope="${s}" class="${s==='all'?'is-on':''}">${s.toUpperCase()}</button>`).join('')}
+        </div>
+        <div class="register__list">
+          ${data.projects.sort((a,b)=>b.value-a.value).map(p=>`
+            <article class="reg-row" data-scope="${p.scope}">
+              <span class="reg-row__year">${p.year}</span>
+              <span class="reg-row__title">${p.title}</span>
+              <span class="reg-row__owner">${p.owner}</span>
+              <span class="reg-row__value">${fmt(p.value)}</span>
+              <span class="reg-row__status reg-row__status--${p.status}">${p.status==='ongoing'?'● ONGOING':'✓ COMPLETED'}</span>
+            </article>`).join('')}
+        </div>
+        <footer class="register__foot">
+          UEN 200210947C · Verify on <a href="https://www1.bca.gov.sg/bca-directory" target="_blank" rel="noopener">BCA Directory</a>
+        </footer>
+      </div>`;
+    document.body.appendChild(dlg);
+    document.body.style.overflow='hidden';
+    requestAnimationFrame(()=>dlg.classList.add('is-open'));
+    const close=()=>{
+      dlg.classList.remove('is-open');
+      document.body.style.overflow='';
+      setTimeout(()=>dlg.remove(),300);
+    };
+    dlg.querySelector('.register__close').addEventListener('click',close);
+    dlg.addEventListener('click',e=>{if(e.target===dlg) close();});
+    document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',esc);}});
+    dlg.querySelectorAll('.register__filters button').forEach(b=>{
+      b.addEventListener('click',()=>{
+        dlg.querySelectorAll('.register__filters button').forEach(x=>x.classList.remove('is-on'));
+        b.classList.add('is-on');
+        const sc=b.dataset.scope;
+        dlg.querySelectorAll('.reg-row').forEach(r=>{
+          r.style.display=(sc==='all'||r.dataset.scope===sc)?'':'none';
+        });
+      });
+    });
+  };
+  $$('[data-action="register"], .card__sum-link').forEach(el=>{
+    el.addEventListener('click',e=>{e.preventDefault();openRegister();});
+  });
+
   // ---------- Smooth burger (mobile placeholder) ----------
   const burger=$('#burger');
   if(burger){
