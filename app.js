@@ -12,6 +12,9 @@
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
+  // ---------- Hero mask-reveal on load ----------
+  requestAnimationFrame(()=>document.querySelector('.hero')?.classList.add('is-loaded'));
+
   // ---------- Hero slideshow ----------
   const slides=$$('.hero__slide');
   const captions=[
@@ -31,19 +34,21 @@
     }
   }, 6000);
 
-  // ---------- Counter animation ----------
+  // ---------- Counter animation (engineer-precision feel) ----------
   const counters=$$('[data-counter]');
   const animateCount=(el)=>{
     const target=parseInt(el.dataset.counter,10);
+    el.style.fontVariantNumeric='tabular-nums lining-nums';
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-      el.textContent=target;return;
+      el.textContent=target.toLocaleString();return;
     }
-    const dur=1400;const t0=performance.now();
+    const dur=1900;const t0=performance.now();
     const tick=(t)=>{
       const p=Math.min((t-t0)/dur,1);
-      const eased=1-Math.pow(1-p,3);
-      el.textContent=Math.round(target*eased);
+      const eased=1-Math.pow(1-p,4); /* quartic-out: settles, not blasts */
+      el.textContent=Math.round(target*eased).toLocaleString();
       if(p<1) requestAnimationFrame(tick);
+      else el.textContent=target.toLocaleString();
     };
     requestAnimationFrame(tick);
   };
