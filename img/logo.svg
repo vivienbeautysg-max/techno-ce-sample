@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Techno CE compass mark">
+  <defs>
+    <linearGradient id="tcDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5A9FD4"/>
+      <stop offset="100%" stop-color="#2876B5"/>
+    </linearGradient>
+    <linearGradient id="tcDarkV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3F8AC4"/>
+      <stop offset="100%" stop-color="#1F5A93"/>
+    </linearGradient>
+    <linearGradient id="tcLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7FBFD"/>
+      <stop offset="100%" stop-color="#C7DEEF"/>
+    </linearGradient>
+    <linearGradient id="tcLightV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D7E6F3"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1F3A5F" stroke-width="0.8" stroke-linejoin="miter">
+    <!-- TOP arm (lighter, light source upper-left) -->
+    <polygon points="60,6 60,60 50,60" fill="url(#tcLightV)"/>
+    <polygon points="60,6 60,60 70,60" fill="url(#tcDarkV)"/>
+    <!-- RIGHT arm -->
+    <polygon points="114,60 60,60 60,50" fill="url(#tcDark)"/>
+    <polygon points="114,60 60,60 60,70" fill="url(#tcDarkV)"/>
+    <!-- BOTTOM arm -->
+    <polygon points="60,114 60,60 50,60" fill="url(#tcDarkV)"/>
+    <polygon points="60,114 60,60 70,60" fill="url(#tcDark)"/>
+    <!-- LEFT arm (lighter) -->
+    <polygon points="6,60 60,60 60,50" fill="url(#tcLight)"/>
+    <polygon points="6,60 60,60 60,70" fill="url(#tcLightV)"/>
+  </g>
+  <!-- Center pivot -->
+  <circle cx="60" cy="60" r="2" fill="#1F3A5F"/>
+</svg>
