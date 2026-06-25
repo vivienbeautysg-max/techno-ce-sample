@@ -3,11 +3,12 @@
   const $=(s,r=document)=>r.querySelector(s);
   const $$=(s,r=document)=>[...r.querySelectorAll(s)];
 
-  // ---------- Nav: pin background after scroll past hero ----------
+  // ---------- Nav: pin background after scroll past the top band (hero or page header) ----------
   const nav=$('#nav');
+  const band=$('.hero, .pagehead');
   const onScroll=()=>{
-    const past=window.scrollY > window.innerHeight * 0.85;
-    nav.classList.toggle('is-pinned', past);
+    const trigger = band ? band.offsetHeight - 72 : window.innerHeight * 0.85;
+    nav.classList.toggle('is-pinned', window.scrollY > trigger);
   };
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
@@ -24,7 +25,7 @@
   ];
   const capEl=$('#heroCaption');
   let idx=0;
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  if(slides.length>1 && !matchMedia('(prefers-reduced-motion: reduce)').matches){
     setInterval(()=>{
       slides[idx].classList.remove('is-active');
       idx=(idx+1)%slides.length;

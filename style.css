@@ -1350,6 +1350,111 @@ p{margin:0}
 }
 
 /* ====================================================================
+   ★ MULTI-PAGE ★  page headers · home explore grid · CTA band ·
+   once-per-session intro · light contact page
+   ==================================================================== */
+
+/* Intro preloader plays once per session (flag set in <head> inline script) */
+.no-intro .preloader{display:none}
+
+/* ---- Page header (interior pages) ---- */
+.pagehead{
+  position:relative;isolation:isolate;
+  background:var(--ink);color:var(--paper);overflow:hidden;
+  padding:clamp(7.5rem,16vh,11rem) var(--pad-x) clamp(2.6rem,5vh,4rem);
+  min-height:clamp(360px,54vh,560px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.pagehead::before{
+  content:'';position:absolute;inset:0;z-index:-2;
+  background:var(--img,none) center/cover no-repeat;
+  filter:saturate(.82) contrast(1.05);
+  opacity:.34;transform:scale(1.05);
+}
+.pagehead::after{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg, rgba(20,48,79,.5) 0%, rgba(20,48,79,.32) 45%, rgba(20,48,79,.92) 100%),
+    radial-gradient(ellipse at 18% 86%, rgba(20,48,79,.5), rgba(20,48,79,0) 60%);
+}
+.pagehead .rule{padding:0;margin-bottom:clamp(1.4rem,3vw,2rem)}
+.pagehead__title{
+  font-family:var(--display);font-weight:200;
+  font-size:clamp(3rem,8vw,7rem);line-height:.96;letter-spacing:-0.035em;
+  color:var(--paper);max-width:15ch;
+}
+.pagehead__title em{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--brand-light)}
+.pagehead__sub{
+  margin-top:clamp(1rem,2vw,1.6rem);
+  font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.5;
+  color:var(--paper-warm);max-width:46ch;font-weight:300;
+}
+
+/* ---- Home: explore directory grid ---- */
+.explore{padding:var(--gap-m) 0}
+.explore__grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  margin:0 var(--pad-x);
+  border-top:1px solid rgba(20,48,79,.2);border-left:1px solid rgba(20,48,79,.2);
+}
+.ex{
+  position:relative;display:flex;flex-direction:column;gap:.7rem;
+  padding:clamp(1.8rem,3vw,2.6rem) clamp(1.4rem,2vw,2rem);
+  border-right:1px solid rgba(20,48,79,.2);border-bottom:1px solid rgba(20,48,79,.2);
+  background:var(--paper);
+  transition:background .35s ease;
+}
+.ex:hover{background:var(--paper-warm)}
+.ex__no{font:500 .72rem/1 var(--mono);letter-spacing:.12em;color:var(--brand)}
+.ex h3{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(1.5rem,2.4vw,2.1rem);letter-spacing:-0.02em;color:var(--ink);
+}
+.ex p{color:var(--steel);font-size:.95rem;line-height:1.55;flex:1;max-width:30ch}
+.ex__go{
+  font:500 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--brand);transition:letter-spacing .3s ease;
+}
+.ex:hover .ex__go{letter-spacing:.22em}
+
+/* ---- CTA band (home → contact) ---- */
+.cta-band{background:var(--ink)}
+.cta-band__link{
+  display:flex;flex-direction:column;gap:.5rem;
+  padding:clamp(3.5rem,8vw,7rem) var(--pad-x);
+  color:var(--paper);transition:transform .35s cubic-bezier(.16,1,.3,1);
+}
+.cta-band__eyebrow{font:500 .75rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--brand-light)}
+.cta-band__big{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(3rem,9vw,8rem);line-height:.95;letter-spacing:-0.03em;color:var(--paper);
+  transition:color .35s ease;
+}
+.cta-band__link:hover .cta-band__big{color:var(--brand-light)}
+
+/* ---- Contact page: light (pagehead dark → contact light → clients dark) ---- */
+.contact--page{background:var(--paper);color:var(--ink);padding:var(--gap-l) 0 var(--gap-m)}
+.contact--page .rule-line{--tick-c:rgba(20,48,79,.35);--line-c:rgba(20,48,79,.28)}
+.contact--page .rule{color:var(--steel)}
+.contact--page .contact__grid{border-top:1px solid rgba(20,48,79,.18);border-bottom:1px solid rgba(20,48,79,.18)}
+.contact--page .contact__grid > div{border-right-color:rgba(20,48,79,.18)}
+.contact--page .contact__lbl{color:var(--brand)}
+.contact--page .contact__grid a{color:var(--ink)}
+.contact--page .contact__grid a:hover{color:var(--brand)}
+.contact--page .contact__sub{color:var(--steel)}
+.contact--page .contact__cta{color:var(--ink);border-top:1px solid rgba(20,48,79,.2);margin-top:1.5rem;padding-top:2rem}
+.contact--page .contact__cta:hover{color:var(--brand)}
+
+@media (max-width: 980px){
+  .explore__grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width: 720px){
+  .pagehead{min-height:58vh}
+  .pagehead__title{font-size:clamp(2.6rem,12vw,4rem)}
+  .explore__grid{grid-template-columns:1fr}
+}
+
+/* ====================================================================
    RESPONSIVE
    ==================================================================== */
 @media (max-width: 980px){

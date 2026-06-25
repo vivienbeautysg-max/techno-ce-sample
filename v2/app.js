@@ -8,32 +8,55 @@
 
   // ---------- Hero crossfade ----------
   const hImgs=$$('.hero__img');
-  let hi=0;
-  setInterval(()=>{
-    hImgs[hi].classList.remove('is-on');
-    hi=(hi+1)%hImgs.length;
-    hImgs[hi].classList.add('is-on');
-  },5500);
-
-  // ---------- Reveal (with fallbacks) ----------
-  const targets=$$('.w, .caps__list li, .num__grid > div, .creds__grid figure, .index__row');
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduced || !('IntersectionObserver' in window)){
-    targets.forEach(t=>t.classList.add('is-in'));
-  } else {
-    targets.forEach(t=>t.classList.add('reveal'));
-    const obs=new IntersectionObserver((es)=>{
-      es.forEach((e,i)=>{
-        if(e.isIntersecting){
-          setTimeout(()=>e.target.classList.add('is-in'), i*70);
-          obs.unobserve(e.target);
-        }
-      });
-    },{threshold:0.08, rootMargin:'0px 0px -5% 0px'});
-    targets.forEach(t=>obs.observe(t));
-    // Safety net: force reveal anything still hidden after 4s
-    setTimeout(()=>targets.forEach(t=>t.classList.add('is-in')), 4000);
+  if(hImgs.length>1 && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    let hi=0;
+    setInterval(()=>{
+      hImgs[hi].classList.remove('is-on');
+      hi=(hi+1)%hImgs.length;
+      hImgs[hi].classList.add('is-on');
+    },5500);
   }
+
+  // ---------- Scroll reveal handled in premium.js (shared motion layer) ----------
+
+  // ---------- Showcase category tabs ----------
+  const scTabs=$$('.showcase__tab');
+  const scPanels=$$('.showcase__panel');
+  const showPanel=(key)=>{
+    scTabs.forEach(t=>{
+      const on=t.dataset.panel===key;
+      t.classList.toggle('is-on',on);
+      t.setAttribute('aria-selected',on?'true':'false');
+      t.tabIndex=on?0:-1;
+    });
+    scPanels.forEach(p=>{
+      const on=p.dataset.panel===key;
+      p.classList.toggle('is-on',on);
+      if(on){p.removeAttribute('hidden');} else {p.setAttribute('hidden','');}
+    });
+  };
+  scTabs.forEach((tab,i)=>{
+    tab.addEventListener('click',()=>showPanel(tab.dataset.panel));
+    tab.addEventListener('keydown',(e)=>{
+      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+      e.preventDefault();
+      const dir=e.key==='ArrowRight'?1:-1;
+      const next=scTabs[(i+dir+scTabs.length)%scTabs.length];
+      showPanel(next.dataset.panel); next.focus();
+    });
+  });
+
+  // ---------- Media tiles (sample placeholders — honest feedback) ----------
+  $$('.vtile').forEach(v=>{
+    v.addEventListener('click',()=>{
+      if(v.querySelector('.vtile__hint')) return;
+      const hint=document.createElement('span');
+      hint.className='vtile__hint';
+      hint.textContent='Sample tile — final video to be embedded';
+      v.appendChild(hint);
+      setTimeout(()=>hint.remove(),2200);
+    });
+  });
 
   // ---------- Mobile burger ----------
   const burger=$('#burger'),navLinks=$('#navLinks');

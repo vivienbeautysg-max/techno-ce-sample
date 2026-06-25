@@ -40,9 +40,9 @@
 
     if (!reduce && hasIO) {
       // ---------- Reveal choreography ----------
-      const groups = {
-        'r-mask': ['.manifesto__lead', '.pullquote blockquote', '.contact__hero', '.values__title', '.media__lead', '.careers__intro h3', '.showcase__lead h3'],
-        'r-up'  : ['.stat', '.cap', '.values__list li', '.post', '.careers__roles li', '.contact__grid > div', '.manifesto__body', '.about__col', '.careers__intro p', '.careers__perk', '.showcase__lead p', '.showcase__chips', '.creds__verify', '.creds__table', '.news__note'],
+      const groups = window.TCE_REVEAL_GROUPS || {
+        'r-mask': ['.pagehead__title', '.cta-band__big', '.manifesto__lead', '.pullquote blockquote', '.contact__hero', '.values__title', '.media__lead', '.careers__intro h3', '.showcase__lead h3'],
+        'r-up'  : ['.pagehead__sub', '.ex', '.stat', '.cap', '.values__list li', '.post', '.careers__roles li', '.contact__grid > div', '.manifesto__body', '.about__col', '.careers__intro p', '.careers__perk', '.showcase__lead p', '.showcase__chips', '.creds__verify', '.creds__table', '.news__note'],
         'r-img' : ['.vtile'],
         'r-fade': ['.card', '.creds__certs figure']
       };
