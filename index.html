@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<script>(function(e){e.className+=' js';try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)e.className+=' motion';}catch(x){}})(document.documentElement);</script>
 <title>Techno CE — Civil engineering, Singapore. Since 2002.</title>
 <meta name="description" content="Techno CE Pte Ltd is a Singapore civil engineering firm — demolition, piling, earthworks, RC works, road & landscape construction. BCA CW02 B2 / CW01 C3. ISO 9001 & 14001. 34 projects, S$80.9M delivered for PUB, NParks, JTC, LTA." />
 <meta name="theme-color" content="#1F3A5F" />
@@ -31,6 +32,12 @@
 </head>
 <body>
 
+<div class="progress" aria-hidden="true"></div>
+<div class="preloader" aria-hidden="true">
+  <span class="preloader__brand"><img src="img/logo.svg" alt="" width="34" height="34" />Techno&nbsp;CE</span>
+  <span class="preloader__bar"></span>
+</div>
+
 <a class="skip" href="#top">Skip to main content</a>
 
 <!-- ==================== NAV ==================== -->
@@ -40,12 +47,15 @@
     <span class="nav__name">TECHNO CE <span class="nav__name-pte">PTE LTD</span></span>
   </a>
   <nav class="nav__links">
-    <a href="#capabilities">Capabilities</a>
-    <a href="#work">Selected Work</a>
-    <a href="#credentials">Credentials</a>
     <a href="#about">About</a>
+    <a href="#capabilities">Services</a>
+    <a href="#work">Projects</a>
+    <a href="#showcase">Showcase</a>
+    <a href="#media">Media</a>
+    <a href="#newsroom">Newsroom</a>
+    <a href="#careers">Careers</a>
     <a href="v2/" class="nav__variant" aria-label="View alternate design, Variant B"><span aria-hidden="true">⇆ B</span></a>
-    <a href="#contact" class="nav__cta">Get a Quote →</a>
+    <a href="#contact" class="nav__cta" data-magnetic="0.35">Get a Quote →</a>
   </nav>
   <button class="nav__burger" aria-label="Menu" id="burger"><span></span><span></span></button>
 </header>
@@ -161,7 +171,7 @@
   <div class="rule">
     <span class="rule-tag">04 / CAPABILITIES</span>
     <span class="rule-line"></span>
-    <span class="rule-tag">SIX WORKHEADS</span>
+    <span class="rule-tag">SIX WORKHEADS + RECOVERY</span>
   </div>
 
   <div class="caps__grid">
@@ -200,6 +210,12 @@
       <h3>Waterproofing Installation</h3>
       <p>Waterproofing systems for buildings, basements and water-retaining structures.</p>
       <span class="cap__grade">CR13 · L1</span>
+    </article>
+    <article class="cap cap--recover">
+      <span class="cap__no">07</span>
+      <h3>Recycled Aggregate &amp; Recovery</h3>
+      <p>On-site crusher and power screen turn demolition hardcore into clean, graded recycled aggregate — less to landfill, less hauled in. The circle closes on our own sites.</p>
+      <span class="cap__grade">CIRCULAR · ON-SITE</span>
     </article>
   </div>
 </section>
@@ -305,38 +321,169 @@
   </div>
 </section>
 
+<!-- ==================== SHOWCASE ==================== -->
+<section class="showcase" id="showcase">
+  <div class="rule">
+    <span class="rule-tag">06 / SHOWCASE</span>
+    <span class="rule-line"></span>
+    <span class="rule-tag">WHAT WE'RE KNOWN FOR</span>
+  </div>
+
+  <div class="showcase__tabs" role="tablist" aria-label="Showcase categories">
+    <button class="showcase__tab is-on" role="tab" aria-selected="true" id="sc-tab-demo" aria-controls="sc-panel-demo" data-panel="demo"><span class="showcase__tab-no">A</span>Demolition</button>
+    <button class="showcase__tab" role="tab" aria-selected="false" tabindex="-1" id="sc-tab-soft" aria-controls="sc-panel-soft" data-panel="soft"><span class="showcase__tab-no">B</span>Softscape</button>
+    <button class="showcase__tab" role="tab" aria-selected="false" tabindex="-1" id="sc-tab-steel" aria-controls="sc-panel-steel" data-panel="steel"><span class="showcase__tab-no">C</span>Steel Structure</button>
+    <button class="showcase__tab" role="tab" aria-selected="false" tabindex="-1" id="sc-tab-team" aria-controls="sc-panel-team" data-panel="team"><span class="showcase__tab-no">D</span>Team Spirit &amp; Well-being</button>
+  </div>
+
+  <!-- A · DEMOLITION -->
+  <div class="showcase__panel is-on" role="tabpanel" id="sc-panel-demo" aria-labelledby="sc-tab-demo" data-panel="demo">
+    <div class="showcase__lead">
+      <h3>Demolition</h3>
+      <p>Heavy take-down on live, constrained sites — pumping stations, NEWater factories and power-station assets, brought down safely and returned to ready-state.</p>
+      <div class="showcase__chips">
+        <span>ERSS</span><span>Deep Basement</span><span>Tall Steel Structure</span>
+      </div>
+    </div>
+    <div class="showcase__grid">
+      <figure class="sc-tile" style="--img:url('img/projects/demolition-pit.jpg')"><figcaption>ERSS &amp; deep-basement removal</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('img/hero/02-erss-basin.jpg')"><figcaption>Sheet-piled ERSS basin</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('img/projects/golf-aerial.jpg')"><figcaption>Site clearance &amp; earthwork</figcaption></figure>
+    </div>
+  </div>
+
+  <!-- B · SOFTSCAPE -->
+  <div class="showcase__panel" role="tabpanel" id="sc-panel-soft" aria-labelledby="sc-tab-soft" data-panel="soft" hidden>
+    <div class="showcase__lead">
+      <h3>Softscape</h3>
+      <p>The delicate end of the practice — parks, gardens and waterfront landscapes built to last and to be lived in, for NParks and Gardens by the Bay.</p>
+      <div class="showcase__chips">
+        <span>Boardwalk</span><span>Stone-clad Wall</span><span>Shelters</span><span>Ponds &amp; Wetlands</span>
+      </div>
+    </div>
+    <div class="showcase__grid">
+      <figure class="sc-tile" style="--img:url('img/projects/kingfisher-bridge.jpg')"><figcaption>Timber boardwalk &amp; arched bridge</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('img/projects/bulim-landscape.jpg')"><figcaption>Landscape &amp; stone-clad walls</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('img/projects/tampines-boulevard.jpg')"><figcaption>Tampines Boulevard Park, 10.06 ha</figcaption></figure>
+    </div>
+  </div>
+
+  <!-- C · STEEL STRUCTURE -->
+  <div class="showcase__panel" role="tabpanel" id="sc-panel-steel" aria-labelledby="sc-tab-steel" data-panel="steel" hidden>
+    <div class="showcase__lead">
+      <h3>Steel Structure</h3>
+      <p>Shelters, pavilions and walkway roofs — fabricated and erected to BCA SB(SS) standard, married to the civil works underneath them.</p>
+      <div class="showcase__chips">
+        <span>ERSS</span><span>Shelters</span><span>Pavilions</span><span>Walkway Roofs</span>
+      </div>
+    </div>
+    <div class="showcase__grid">
+      <figure class="sc-tile" style="--img:url('img/hero/03-kingfisher-pavilion.jpg')"><figcaption>Kingfisher pavilion, Bay South</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('img/projects/sentosa-pavilion.jpg')"><figcaption>Course pavilion &amp; shelter</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('img/projects/sun-plaza.jpg')"><figcaption>Inclusive playground steelwork</figcaption></figure>
+    </div>
+  </div>
+
+  <!-- D · TEAM SPIRIT & WELL-BEING -->
+  <div class="showcase__panel" role="tabpanel" id="sc-panel-team" aria-labelledby="sc-tab-team" data-panel="team" hidden>
+    <div class="showcase__lead">
+      <h3>Team Spirit &amp; Well-being</h3>
+      <p>Ten people, long timesheets, one studio — and the outings, feasts and celebrations that keep a small team together year after year.</p>
+      <div class="showcase__chips">
+        <span>Company Outings</span><span>Durian Fest</span><span>D&amp;D Night</span><span>Family Day</span>
+      </div>
+    </div>
+    <div class="showcase__grid">
+      <figure class="sc-tile sc-tile--ph"><span class="sc-tile__ico" aria-hidden="true">🚌</span><figcaption>Company outings — photos to be added</figcaption></figure>
+      <figure class="sc-tile sc-tile--ph"><span class="sc-tile__ico" aria-hidden="true">🍴</span><figcaption>Annual durian fest — photos to be added</figcaption></figure>
+      <figure class="sc-tile sc-tile--ph"><span class="sc-tile__ico" aria-hidden="true">🎉</span><figcaption>Dinner &amp; Dance — photos to be added</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MEDIA ==================== -->
+<section class="media" id="media">
+  <div class="rule">
+    <span class="rule-tag">07 / MEDIA</span>
+    <span class="rule-line"></span>
+    <span class="rule-tag">SEE US IN MOTION</span>
+  </div>
+
+  <div class="media__intro">
+    <p class="media__lead">Our work moves — site reels, project time-lapses and the moments the agencies don't get to see.</p>
+    <p class="media__note">Sample tiles · final cuts to be embedded — TikTok, news features and our own production.</p>
+  </div>
+
+  <div class="media__grid">
+    <button class="vtile" type="button" aria-label="Play sample: site reel (placeholder)">
+      <span class="vtile__img" style="--img:url('img/projects/demolition-pit.jpg')"></span>
+      <span class="vtile__play" aria-hidden="true"></span>
+      <span class="vtile__meta"><b>Own Production</b><span>Demolition site reel · 0:45</span></span>
+    </button>
+    <button class="vtile" type="button" aria-label="Play sample: news feature (placeholder)">
+      <span class="vtile__img" style="--img:url('img/projects/tampines-boulevard.jpg')"></span>
+      <span class="vtile__play" aria-hidden="true"></span>
+      <span class="vtile__meta"><b>In the Media</b><span>Tampines Boulevard Park opening</span></span>
+    </button>
+    <button class="vtile" type="button" aria-label="Play sample: TikTok clip (placeholder)">
+      <span class="vtile__img" style="--img:url('img/projects/kingfisher-bridge.jpg')"></span>
+      <span class="vtile__play" aria-hidden="true"></span>
+      <span class="vtile__meta"><b>TikTok · @technoce</b><span>Building Bay South, in 30 seconds</span></span>
+    </button>
+  </div>
+</section>
+
 <!-- ==================== CLIENTS ==================== -->
 <section class="clients">
   <div class="rule rule--light">
-    <span class="rule-tag">06 / CLIENTS</span>
+    <span class="rule-tag">08 / CLIENTS</span>
     <span class="rule-line"></span>
     <span class="rule-tag">TRUSTED BY THE AGENCIES THAT BUILD SINGAPORE</span>
   </div>
-  <div class="clients__grid">
-    <span>PUB</span>
-    <span>NParks</span>
-    <span>JTC</span>
-    <span>LTA</span>
-    <span>MOE</span>
-    <span>Gardens by the Bay</span>
-    <span>Sentosa Development</span>
-    <span>Sentosa Golf Club</span>
-    <span>SICC</span>
-    <span>Tanah Merah Country Club</span>
-    <span>Seletar Country Club</span>
-    <span>NSRCC</span>
-    <span>Keppel Club</span>
-    <span>NTU</span>
-    <span>YTL PowerSeraya</span>
-    <span>China Railway First Group</span>
-    <span>TEHC International</span>
+  <div class="marquee" role="region" aria-label="Trusted by Singapore's public agencies and partners">
+    <div class="marquee__track">
+      <span class="marquee__item">PUB</span>
+      <span class="marquee__item">NParks</span>
+      <span class="marquee__item">JTC</span>
+      <span class="marquee__item">LTA</span>
+      <span class="marquee__item">MOE</span>
+      <span class="marquee__item">Gardens by the Bay</span>
+      <span class="marquee__item">Sentosa Development</span>
+      <span class="marquee__item">Sentosa Golf Club</span>
+      <span class="marquee__item">SICC</span>
+      <span class="marquee__item">Tanah Merah Country Club</span>
+      <span class="marquee__item">Seletar Country Club</span>
+      <span class="marquee__item">NSRCC</span>
+      <span class="marquee__item">Keppel Club</span>
+      <span class="marquee__item">NTU</span>
+      <span class="marquee__item">YTL PowerSeraya</span>
+      <span class="marquee__item">China Railway First Group</span>
+      <span class="marquee__item">TEHC International</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">PUB</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">NParks</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">JTC</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">LTA</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">MOE</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">Gardens by the Bay</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">Sentosa Development</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">Sentosa Golf Club</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">SICC</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">Tanah Merah Country Club</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">Seletar Country Club</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">NSRCC</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">Keppel Club</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">NTU</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">YTL PowerSeraya</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">China Railway First Group</span>
+      <span class="marquee__item marquee__dup" aria-hidden="true">TEHC International</span>
+    </div>
   </div>
 </section>
 
 <!-- ==================== CREDENTIALS ==================== -->
 <section class="creds" id="credentials">
   <div class="rule">
-    <span class="rule-tag">07 / CREDENTIALS</span>
+    <span class="rule-tag">09 / CREDENTIALS</span>
     <span class="rule-line"></span>
     <span class="rule-tag">VERIFIABLE · CURRENT</span>
   </div>
@@ -386,7 +533,7 @@
 <!-- ==================== ABOUT ==================== -->
 <section class="about" id="about">
   <div class="rule rule--light">
-    <span class="rule-tag">08 / ABOUT</span>
+    <span class="rule-tag">10 / ABOUT</span>
     <span class="rule-line"></span>
     <span class="rule-tag">VISION · MISSION · MOTTO</span>
   </div>
@@ -394,16 +541,34 @@
   <div class="about__grid">
     <div class="about__col">
       <span class="about__lbl">Vision</span>
-      <h3>Take pride<br/>of our works.</h3>
+      <h3>Take pride<br/>in every job.</h3>
+      <p class="about__col-sub">To be the specialist Singapore's agencies trust for the work that is hard to build — and harder to take down.</p>
     </div>
     <div class="about__col">
       <span class="about__lbl">Mission</span>
-      <h3>The best<br/>is yet to come.</h3>
+      <h3>Build it,<br/>and leave it better.</h3>
+      <p class="about__col-sub">To deliver every civil, demolition and landscape contract safely, cleanly and on time — returning each site better than we found it.</p>
     </div>
     <div class="about__col">
       <span class="about__lbl">Motto</span>
       <h3 class="about__motto"><em>Mission Possible.</em></h3>
+      <p class="about__col-sub">Twenty-four years of saying yes to the contracts others walk away from.</p>
     </div>
+  </div>
+
+  <!-- CORE VALUES -->
+  <div class="values" id="values">
+    <div class="values__head">
+      <span class="about__lbl">Core Values</span>
+      <h3 class="values__title">Five things we don't compromise.</h3>
+    </div>
+    <ol class="values__list">
+      <li><span class="values__no">01</span><h4>Safety First</h4><p>Everyone goes home. No job is worth a shortcut.</p></li>
+      <li><span class="values__no">02</span><h4>Integrity</h4><p>We keep our word, and we keep our records.</p></li>
+      <li><span class="values__no">03</span><h4>Craftsmanship</h4><p>Heavy or delicate — built to last, finished by hand.</p></li>
+      <li><span class="values__no">04</span><h4>Sustainability</h4><p>We recycle what we remove — hardcore back to aggregate.</p></li>
+      <li><span class="values__no">05</span><h4>Our People</h4><p>A small team, on payroll, on our own sites.</p></li>
+    </ol>
   </div>
 
   <p class="about__foot">
@@ -411,10 +576,74 @@
   </p>
 </section>
 
+<!-- ==================== NEWSROOM ==================== -->
+<section class="news" id="newsroom">
+  <div class="rule">
+    <span class="rule-tag">11 / NEWSROOM</span>
+    <span class="rule-line"></span>
+    <span class="rule-tag">LATEST FROM SITE</span>
+  </div>
+
+  <div class="news__grid">
+    <article class="post">
+      <span class="post__date">Feb 2025</span>
+      <h3>Tampines Boulevard Park opens to the public</h3>
+      <p>Our 10.06-hectare park construction for NParks — across two sections split by Tampines Avenue 12 — officially opened on 22 February 2025.</p>
+      <span class="post__tag">Project · NParks</span>
+    </article>
+    <article class="post">
+      <span class="post__date">2024</span>
+      <h3>Awarded PUB DTSS Phase 2 — Flow Diversion &amp; Demolition</h3>
+      <p>Techno CE is appointed for Contract 1 of the Deep Tunnel Sewerage System Phase 2 — decommissioning used-water pumping installations and removing sheet-piled basements.</p>
+      <span class="post__tag">Contract · PUB</span>
+    </article>
+    <article class="post">
+      <span class="post__date">Ongoing</span>
+      <h3>Closing the loop: on-site crusher &amp; power screen</h3>
+      <p>We're processing demolition hardcore into recycled aggregate on our own sites — cutting both landfill and the lorries hauling new stone in.</p>
+      <span class="post__tag">Sustainability</span>
+    </article>
+    <article class="post">
+      <span class="post__date">Recognised</span>
+      <h3>BCA Green &amp; Gracious Builder — Merit</h3>
+      <p>Recognised for environmental care and good site conduct, alongside our ISO 9001, ISO 14001 and Progressive Wage Mark.</p>
+      <span class="post__tag">Award · BCA</span>
+    </article>
+  </div>
+  <p class="news__note">Sample headlines drawn from real milestones — to be replaced with live posts &amp; media coverage.</p>
+</section>
+
+<!-- ==================== CAREERS ==================== -->
+<section class="careers" id="careers">
+  <div class="rule">
+    <span class="rule-tag">12 / CAREERS</span>
+    <span class="rule-line"></span>
+    <span class="rule-tag">BUILD WITH US</span>
+  </div>
+
+  <div class="careers__grid">
+    <div class="careers__intro">
+      <h3>A small team, on real sites.</h3>
+      <p>We don't subcontract our project management — we are on the sites we build. If you want responsibility early, fair wages and work you can point to from the road, talk to us.</p>
+      <p class="careers__perk">Progressive Wage Mark employer · structured training · on-site mentoring</p>
+    </div>
+    <ul class="careers__roles">
+      <li><span class="careers__role-k">Open</span><h4>Project Engineer — Civil &amp; Demolition</h4><span class="careers__loc">Geylang HQ &amp; sites · Full-time</span></li>
+      <li><span class="careers__role-k">Open</span><h4>Site Supervisor</h4><span class="careers__loc">Island-wide sites · Full-time</span></li>
+      <li><span class="careers__role-k">Open</span><h4>Quantity Surveyor</h4><span class="careers__loc">Geylang HQ · Full-time</span></li>
+      <li><span class="careers__role-k">Talent pool</span><h4>Plant &amp; Machinery Operator</h4><span class="careers__loc">Crusher / excavator · Sites</span></li>
+    </ul>
+  </div>
+  <a class="careers__cta" href="mailto:technoce@singnet.com.sg?subject=Career%20enquiry%20%E2%80%94%20Techno%20CE" data-magnetic="0.25">
+    Send your CV to technoce@singnet.com.sg <span aria-hidden="true">→</span>
+  </a>
+  <p class="news__note">Sample roles · final openings to be confirmed by Techno CE.</p>
+</section>
+
 <!-- ==================== CONTACT ==================== -->
 <section class="contact" id="contact">
   <div class="rule rule--inverse">
-    <span class="rule-tag">09 / CONTACT</span>
+    <span class="rule-tag">13 / CONTACT</span>
     <span class="rule-line"></span>
     <span class="rule-tag">HAVE A PROJECT?</span>
   </div>
@@ -437,7 +666,7 @@
     </div>
   </div>
 
-  <a class="contact__cta" href="https://www1.bca.gov.sg/bca-directory" target="_blank" rel="noopener">
+  <a class="contact__cta" href="https://www1.bca.gov.sg/bca-directory" target="_blank" rel="noopener" data-magnetic="0.2">
     Verify Techno CE on the BCA Directory <span>→</span>
   </a>
 </section>
@@ -472,5 +701,6 @@
 </footer>
 
 <script src="app.js"></script>
+<script src="premium.js"></script>
 </body>
 </html>

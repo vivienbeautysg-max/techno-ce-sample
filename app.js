@@ -24,15 +24,17 @@
   ];
   const capEl=$('#heroCaption');
   let idx=0;
-  setInterval(()=>{
-    slides[idx].classList.remove('is-active');
-    idx=(idx+1)%slides.length;
-    slides[idx].classList.add('is-active');
-    if(capEl){
-      capEl.querySelector('.caption-num').textContent=captions[idx].n;
-      capEl.querySelector('.caption-text').textContent=captions[idx].t;
-    }
-  }, 6000);
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(()=>{
+      slides[idx].classList.remove('is-active');
+      idx=(idx+1)%slides.length;
+      slides[idx].classList.add('is-active');
+      if(capEl){
+        capEl.querySelector('.caption-num').textContent=captions[idx].n;
+        capEl.querySelector('.caption-text').textContent=captions[idx].t;
+      }
+    }, 6000);
+  }
 
   // ---------- Counter animation (engineer-precision feel) ----------
   const counters=$$('[data-counter]');
@@ -84,24 +86,7 @@
     rules.forEach(r=>r.classList.add('is-in'));
   }
 
-  // ---------- Scroll reveal (with fallbacks) ----------
-  const revealTargets=$$('.cap, .stat, .manifesto__lead, .manifesto__body, .creds__certs figure, .about__col, .contact__grid > div');
-  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reducedMotion || !('IntersectionObserver' in window)){
-    revealTargets.forEach(el=>el.classList.add('is-in'));
-  } else {
-    revealTargets.forEach(el=>el.classList.add('reveal'));
-    const revealObs=new IntersectionObserver((entries)=>{
-      entries.forEach((e,i)=>{
-        if(e.isIntersecting){
-          setTimeout(()=>e.target.classList.add('is-in'), i*60);
-          revealObs.unobserve(e.target);
-        }
-      });
-    },{threshold:0.08, rootMargin:'0px 0px -5% 0px'});
-    revealTargets.forEach(t=>revealObs.observe(t));
-    setTimeout(()=>revealTargets.forEach(t=>t.classList.add('is-in')), 4000);
-  }
+  // ---------- Scroll reveal handled in premium.js (upgraded motion layer) ----------
 
   // ---------- Projects data binding (full register modal) ----------
   let projectData=null;
@@ -179,6 +164,50 @@
   };
   $$('[data-action="register"], .card__sum-link').forEach(el=>{
     el.addEventListener('click',e=>{e.preventDefault();openRegister();});
+  });
+
+  // ---------- Showcase category tabs ----------
+  const scTabs=$$('.showcase__tab');
+  const scPanels=$$('.showcase__panel');
+  const showPanel=(key)=>{
+    scTabs.forEach(t=>{
+      const on=t.dataset.panel===key;
+      t.classList.toggle('is-on',on);
+      t.setAttribute('aria-selected',on?'true':'false');
+      t.tabIndex=on?0:-1;
+    });
+    scPanels.forEach(p=>{
+      const on=p.dataset.panel===key;
+      p.classList.toggle('is-on',on);
+      if(on){p.removeAttribute('hidden');}
+      else{p.setAttribute('hidden','');}
+    });
+  };
+  scTabs.forEach((tab,i)=>{
+    tab.addEventListener('click',()=>showPanel(tab.dataset.panel));
+    tab.addEventListener('keydown',(e)=>{
+      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+      e.preventDefault();
+      const dir=e.key==='ArrowRight'?1:-1;
+      const next=scTabs[(i+dir+scTabs.length)%scTabs.length];
+      showPanel(next.dataset.panel);
+      next.focus();
+    });
+  });
+
+  // ---------- Media tiles (sample placeholders — honest feedback) ----------
+  $$('.vtile').forEach(v=>{
+    v.addEventListener('click',()=>{
+      if(v.querySelector('.vtile__hint')) return;
+      const hint=document.createElement('span');
+      hint.className='vtile__hint';
+      hint.textContent='Sample tile — final video to be embedded';
+      hint.style.cssText='position:absolute;inset:auto 0 0 0;z-index:3;padding:.6rem .9rem;'+
+        'font:500 .68rem/1.4 var(--mono);letter-spacing:.04em;color:var(--paper);'+
+        'background:var(--brand-deep);text-align:center;';
+      v.appendChild(hint);
+      setTimeout(()=>hint.remove(),2200);
+    });
   });
 
   // ---------- Mobile burger ----------
