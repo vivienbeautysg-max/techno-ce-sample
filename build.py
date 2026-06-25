@@ -298,7 +298,7 @@ def clients_block():
 
 CTA_BAND = '''<!-- CTA BAND -->
 <section class="cta-band">
-  <a class="cta-band__link" href="contact.html" data-magnetic="0.2">
+  <a class="cta-band__link" href="contact.html">
     <span class="cta-band__eyebrow">Have a project?</span>
     <span class="cta-band__big">Let's talk <span aria-hidden="true">→</span></span>
   </a>
@@ -692,7 +692,7 @@ CAREERS = '''<!-- CAREERS -->
       <li><span class="careers__role-k">Talent pool</span><h4>Plant &amp; Machinery Operator</h4><span class="careers__loc">Crusher / excavator · Sites</span></li>
     </ul>
   </div>
-  <a class="careers__cta" href="mailto:technoce@singnet.com.sg?subject=Career%20enquiry%20%E2%80%94%20Techno%20CE" data-magnetic="0.25">
+  <a class="careers__cta" href="mailto:technoce@singnet.com.sg?subject=Career%20enquiry%20%E2%80%94%20Techno%20CE">
     Send your CV to technoce@singnet.com.sg <span aria-hidden="true">→</span>
   </a>
   <p class="news__note">Sample roles · final openings to be confirmed by Techno CE.</p>
@@ -721,7 +721,7 @@ CONTACT_BODY = '''<!-- CONTACT -->
       <a href="https://maps.google.com/?q=100+Lorong+23+Geylang+%2303-03+D'Centennial+Singapore+388398" target="_blank" rel="noopener">100 Lorong 23 Geylang<br/>#03-03 D'Centennial<br/>Singapore 388398</a>
     </div>
   </div>
-  <a class="contact__cta" href="https://www1.bca.gov.sg/bca-directory" target="_blank" rel="noopener" data-magnetic="0.2">
+  <a class="contact__cta" href="https://www1.bca.gov.sg/bca-directory" target="_blank" rel="noopener">
     Verify Techno CE on the BCA Directory <span>→</span>
   </a>
 </section>
