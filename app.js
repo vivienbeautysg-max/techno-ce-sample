@@ -19,9 +19,9 @@
   // ---------- Hero slideshow ----------
   const slides=$$('.hero__slide');
   const captions=[
-    {n:'01 / 03', t:'Singapore Island Country Club — redevelopment, S$7.34M'},
-    {n:'02 / 03', t:'ERSS sheet piling — Lower Seletar Reservoir'},
-    {n:'03 / 03', t:'Kingfisher Wetland — Bay South, Gardens by the Bay'}
+    {n:'01 / 03', t:'Deep-basement removal in sheet-piled ERSS — Mugliston Park Pumping Station, PUB'},
+    {n:'02 / 03', t:'ABC Waters at Jurong Canal — PUB'},
+    {n:'03 / 03', t:'Magical Bridge Playground — Sun Plaza Park, NParks'}
   ];
   const capEl=$('#heroCaption');
   let idx=0;
@@ -165,50 +165,6 @@
   };
   $$('[data-action="register"], .card__sum-link').forEach(el=>{
     el.addEventListener('click',e=>{e.preventDefault();openRegister();});
-  });
-
-  // ---------- Showcase category tabs ----------
-  const scTabs=$$('.showcase__tab');
-  const scPanels=$$('.showcase__panel');
-  const showPanel=(key)=>{
-    scTabs.forEach(t=>{
-      const on=t.dataset.panel===key;
-      t.classList.toggle('is-on',on);
-      t.setAttribute('aria-selected',on?'true':'false');
-      t.tabIndex=on?0:-1;
-    });
-    scPanels.forEach(p=>{
-      const on=p.dataset.panel===key;
-      p.classList.toggle('is-on',on);
-      if(on){p.removeAttribute('hidden');}
-      else{p.setAttribute('hidden','');}
-    });
-  };
-  scTabs.forEach((tab,i)=>{
-    tab.addEventListener('click',()=>showPanel(tab.dataset.panel));
-    tab.addEventListener('keydown',(e)=>{
-      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
-      e.preventDefault();
-      const dir=e.key==='ArrowRight'?1:-1;
-      const next=scTabs[(i+dir+scTabs.length)%scTabs.length];
-      showPanel(next.dataset.panel);
-      next.focus();
-    });
-  });
-
-  // ---------- Media tiles (sample placeholders — honest feedback) ----------
-  $$('.vtile').forEach(v=>{
-    v.addEventListener('click',()=>{
-      if(v.querySelector('.vtile__hint')) return;
-      const hint=document.createElement('span');
-      hint.className='vtile__hint';
-      hint.textContent='Sample tile — final video to be embedded';
-      hint.style.cssText='position:absolute;inset:auto 0 0 0;z-index:3;padding:.6rem .9rem;'+
-        'font:500 .68rem/1.4 var(--mono);letter-spacing:.04em;color:var(--paper);'+
-        'background:var(--brand-deep);text-align:center;';
-      v.appendChild(hint);
-      setTimeout(()=>hint.remove(),2200);
-    });
   });
 
   // ---------- Mobile burger ----------

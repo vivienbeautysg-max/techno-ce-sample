@@ -567,7 +567,9 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:300;letter-spacing:-0.0
   .nav__links.is-open{display:flex}
   .nav__links a{font-size:.9rem;padding:.4rem 0}
   .w{grid-template-columns:1fr;gap:1.5rem}
-  .w:nth-child(even) .w__media,.w:nth-child(even) .w__copy{grid-column:1}
+  .w:nth-of-type(n) .w__media,.w:nth-of-type(n) .w__copy{grid-column:1;grid-row:auto}
+  .w__media{order:1}
+  .w__copy{order:2}
   .w__no{margin-bottom:.5rem}
   .sec-head{grid-template-columns:auto 1fr;gap:1rem}
   .sec-head__meta{display:none}
@@ -702,6 +704,29 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:300;letter-spacing:-0.0
 .sc-tile--ph::after{display:none}
 .sc-tile__ico{font-size:2.4rem;line-height:1}
 .sc-tile--ph figcaption{padding:0;color:var(--slate)}
+/* Services page: all four specialities stacked (no tabs) */
+.showcase--stack .showcase__panel + .showcase__panel{
+  margin-top:clamp(4rem,8vw,7rem);
+  padding-top:clamp(3rem,6vw,5rem);
+  border-top:1px solid var(--hairline);
+}
+
+/* ---- Projects: media block for contracts still awaiting site photos ---- */
+.w__media--ph{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  background:var(--paper-2) repeating-linear-gradient(90deg,rgba(20,48,79,.045) 0 1px,transparent 1px 28px);
+  border:1px solid var(--hairline);
+}
+.w__ph-code{
+  font-family:var(--display);font-weight:200;
+  font-size:clamp(3.2rem,7vw,5.6rem);line-height:1;letter-spacing:-0.04em;
+  color:var(--ink);
+}
+.w__ph-note{
+  font:400 .7rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--copper);
+}
+@media screen and (max-width:780px){.w__media--ph{aspect-ratio:4/3}}
 
 /* ---- Media (light) ---- */
 .media{padding:var(--gap-m) 0 var(--gap-l);background:var(--paper-2)}

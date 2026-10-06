@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Techno CE — Variant B ("Quiet Practice", light) multi-page generator.
-Same 9 tabs as Variant A, in v2's light editorial style.
+Same pages as Variant A, in v2's light editorial style.
 Run:  python build.py   (from inside the v2/ folder)
 """
 import io, os
@@ -11,21 +11,19 @@ BASE = "https://vivienbeautysg-max.github.io/techno-ce-sample/v2/"
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 NAV_ITEMS = [
-    ("about",    "About",    "about.html"),
+    ("about",    "About Us", "about.html"),
     ("services", "Services", "services.html"),
     ("projects", "Projects", "projects.html"),
-    ("showcase", "Showcase", "showcase.html"),
-    ("media",    "Media",    "media.html"),
     ("newsroom", "Newsroom", "newsroom.html"),
     ("careers",  "Careers",  "careers.html"),
 ]
 
 REVEAL_GROUPS = ('{"r-mask":[".pagehead__title",".cta-band__big",".about__lead",".num__cap",'
-    '".values__title",".vmm__col h3",".media__lead",".careers__intro h3",".showcase__lead h3"],'
-    '"r-up":[".pagehead__sub",".index__row",".w",".caps__list li",".num__grid > div",'
+    '".values__title",".vmm__col h3",".careers__intro h3",".showcase__lead h3"],'
+    '"r-up":[".pagehead__sub",".index__row",".w",".num__grid > div",'
     '".values__list li",".post",".careers__roles li",".about p",".showcase__lead p",'
-    '".showcase__chips",".careers__intro p",".careers__perk",".media__note",".creds__verify"],'
-    '"r-img":[".vtile"],"r-fade":[".creds__grid figure"]}')
+    '".showcase__chips",".careers__intro p",".careers__perk",".creds__verify"],'
+    '"r-img":[],"r-fade":[".creds__grid figure"]}')
 
 
 def head(title, desc, canon):
@@ -76,7 +74,7 @@ def nav(active):
         cur = ' class="is-active" aria-current="page"' if key == active else ''
         out.append(f'    <a href="{href}"{cur}>{label}</a>')
     ccur = ' class="is-active" aria-current="page"' if active == 'contact' else ''
-    out.append(f'    <a href="contact.html"{ccur}>Contact</a>')
+    out.append(f'    <a href="contact.html"{ccur}>Contact Us</a>')
     out.append('  </nav>')
     out.append('  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>')
     out.append('</header>')
@@ -94,7 +92,7 @@ def pagehead(eyebrow, title_html, sub):
 FOOTER = '''
 <footer class="foot">
   <div class="foot__line">
-    <span>Techno CE Pte Ltd · UEN 200210947C · BCA CW02 B2 · CW01 C3 · ISO 9001:2015 · ISO 14001:2015</span>
+    <span>Techno CE Pte Ltd · UEN 200210947C · BCA CW02 B2 · CW01 C3 · ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018</span>
     <span>© 2002–2026 Techno CE Pte Ltd · 100 Lorong 23 Geylang #03-03 · +65 6745 5725</span>
   </div>
   <div class="foot__line foot__line--legal">
@@ -118,9 +116,9 @@ def page(active, title, desc, canon, body):
 HERO = '''<!-- HERO -->
 <section class="hero">
   <div class="hero__art">
-    <img class="hero__img is-on" src="../img/hero/03-kingfisher-pavilion.jpg" alt="Kingfisher Wetland pavilion at Bay South, Gardens by the Bay — built by Techno CE" />
-    <img class="hero__img" src="../img/projects/kingfisher-bridge.jpg" alt="" aria-hidden="true" />
-    <img class="hero__img" src="../img/projects/sentosa-pavilion.jpg" alt="" aria-hidden="true" />
+    <img class="hero__img is-on" src="../img/hero/02-erss-basin.jpg" alt="Deep-basement removal in sheet-piled ERSS — Mugliston Park Pumping Station, PUB" />
+    <img class="hero__img" src="../img/projects/abc-jurong-steps.jpg" alt="ABC Waters at Jurong Canal — PUB" aria-hidden="true" />
+    <img class="hero__img" src="../img/projects/sun-plaza.jpg" alt="Magical Bridge Playground — Sun Plaza Park, NParks" aria-hidden="true" />
   </div>
   <div class="hero__text">
     <span class="hero__eyebrow">— Estd 2002 · Singapore</span>
@@ -129,12 +127,12 @@ HERO = '''<!-- HERO -->
       <span class="hero__h-line"><i>of civil&nbsp;engineering.</i></span>
     </h1>
     <p class="hero__sub">
-      For parks &amp; gardens, golf courses, reservoirs and the things underneath. Twenty-four years on Singapore's sites, working hand-in-hand with the agencies that build the country.
+      For pumping stations, parks &amp; waterways — and the things underneath. Twenty-four years on Singapore's sites, working hand-in-hand with the agencies that build the country.
     </p>
     <div class="hero__chips" role="list">
       <span role="listitem">BCA CW02 B2</span><span aria-hidden="true">·</span>
       <span role="listitem">CW01 C3</span><span aria-hidden="true">·</span>
-      <span role="listitem">ISO 9001 / 14001</span><span aria-hidden="true">·</span>
+      <span role="listitem">ISO 9001 / 14001 / 45001</span><span aria-hidden="true">·</span>
       <span role="listitem">Green &amp; Gracious Merit</span>
     </div>
   </div>
@@ -143,13 +141,12 @@ HERO = '''<!-- HERO -->
 
 INDEX = '''<!-- INDEX / DIRECTORY -->
 <section class="index">
-  <div class="index__row"><span>I</span><a href="about.html">About</a><span class="index__dot"></span></div>
+  <div class="index__row"><span>I</span><a href="about.html">About Us</a><span class="index__dot"></span></div>
   <div class="index__row"><span>II</span><a href="services.html">Services</a><span class="index__dot"></span></div>
   <div class="index__row"><span>III</span><a href="projects.html">Projects</a><span class="index__dot"></span></div>
-  <div class="index__row"><span>IV</span><a href="showcase.html">Showcase</a><span class="index__dot"></span></div>
-  <div class="index__row"><span>V</span><a href="media.html">Media</a><span class="index__dot"></span></div>
-  <div class="index__row"><span>VI</span><a href="newsroom.html">Newsroom</a><span class="index__dot"></span></div>
-  <div class="index__row"><span>VII</span><a href="careers.html">Careers</a><span class="index__dot"></span></div>
+  <div class="index__row"><span>IV</span><a href="newsroom.html">Newsroom</a><span class="index__dot"></span></div>
+  <div class="index__row"><span>V</span><a href="careers.html">Careers</a><span class="index__dot"></span></div>
+  <div class="index__row"><span>VI</span><a href="contact.html">Contact Us</a><span class="index__dot"></span></div>
 </section>
 '''
 
@@ -180,7 +177,6 @@ PULLQUOTE = '''<!-- PULL-QUOTE -->
 '''
 
 CLIENTS_ITEMS = ["PUB","NParks","JTC","LTA","MOE","Gardens by the Bay","Sentosa Development",
-    "Sentosa Golf Club","SICC","Tanah Merah Country Club","Seletar Country Club","NSRCC",
     "Keppel Club","NTU","YTL PowerSeraya","China Railway First Group","TEHC International"]
 
 
@@ -206,153 +202,160 @@ CTA_BAND = '''<!-- CTA BAND -->
 </section>
 '''
 
-WORKS = '''<!-- WORKS -->
+GLIMPSE = '''<!-- A GLIMPSE OF PROJECTS -->
 <section class="works" id="works">
   <header class="sec-head">
     <span class="sec-head__num">—</span>
-    <h2>Selected Works</h2>
-    <span class="sec-head__meta">Eight of thirty-four</span>
+    <h2>A Glimpse of Projects</h2>
+    <span class="sec-head__meta">Six of thirty-four</span>
   </header>
 
   <article class="w" data-i="01">
-    <div class="w__no">01<span>&nbsp;/&nbsp;08</span></div>
-    <div class="w__media"><img src="../img/projects/demolition-pit.jpg" alt="DTSS Phase 2 demolition basin"></div>
+    <div class="w__no">01<span>&nbsp;/&nbsp;06</span></div>
+    <div class="w__media"><img src="../img/projects/sun-plaza.jpg" alt="Magical Bridge Playground at Sun Plaza Park"></div>
     <div class="w__copy">
-      <span class="w__year">2024 — Ongoing</span>
-      <h3>DTSS Phase 2 — Flow Diversion &amp; Demolition</h3>
-      <p>Used-water pumping installations decommissioning, sheet-piled basement removal, and grouting of disused mains across multiple sites — Public Utilities Board, Contract&nbsp;1.</p>
-      <dl><dt>Owner</dt><dd>Public Utilities Board (PUB)</dd>
-          <dt>Value</dt><dd>S$9,455,000</dd>
-          <dt>Workhead</dt><dd>CR03 · Demolition</dd></dl>
+      <span class="w__year">Opened Jun 2026</span>
+      <h3>Magical Bridge Playground — Sun Plaza Park</h3>
+      <dl><dt>Owner</dt><dd>National Parks Board (NParks)</dd>
+          <dt>Value</dt><dd>S$3,554,747</dd>
+          <dt>Speciality</dt><dd>Steel Structures</dd></dl>
     </div>
   </article>
 
   <article class="w" data-i="02">
-    <div class="w__no">02<span>&nbsp;/&nbsp;08</span></div>
-    <div class="w__media"><img src="../img/projects/golf-aerial.jpg" alt="Sentosa golf course aerial"></div>
+    <div class="w__no">02<span>&nbsp;/&nbsp;06</span></div>
+    <div class="w__media"><img src="../img/projects/abc-jurong-shelter.jpg" alt="Canal-side shelter at ABC Waters, Jurong Canal"></div>
     <div class="w__copy">
-      <span class="w__year">2022</span>
-      <h3>Sentosa Golf Club — Tanjong Course Redevelopment</h3>
-      <p>Earthwork, RC bridge and tunnel works for the redevelopment of the Tanjong course. A long collaboration with TEHC International, on Singapore's most exposed coastline.</p>
-      <dl><dt>Owner</dt><dd>Sentosa Golf Club</dd>
-          <dt>Value</dt><dd>S$7,412,842</dd>
-          <dt>Workhead</dt><dd>CW02 · Civil</dd></dl>
+      <span class="w__year">Completed</span>
+      <h3>ABC Waters at Jurong Canal — PIE to Boon Lay Way</h3>
+      <dl><dt>Owner</dt><dd>Public Utilities Board (PUB)</dd>
+          <dt>Value</dt><dd>S$2,877,000</dd>
+          <dt>Speciality</dt><dd>Steel Structures · Hardscape</dd></dl>
     </div>
   </article>
 
   <article class="w" data-i="03">
-    <div class="w__no">03<span>&nbsp;/&nbsp;08</span></div>
-    <div class="w__media"><img src="../img/projects/sentosa-pavilion.jpg" alt="Singapore Island Country Club pavilion"></div>
+    <div class="w__no">03<span>&nbsp;/&nbsp;06</span></div>
+    <div class="w__media"><img src="../img/projects/demolition-pit.jpg" alt="Basement removal inside ERSS at Mugliston Park Pumping Station"></div>
     <div class="w__copy">
-      <span class="w__year">2021</span>
-      <h3>Singapore Island Country Club — Redevelopment</h3>
-      <p>Earthwork and reinforced concrete retaining walls. The smaller pavilions on the course were finished by the same hands that earlier rebuilt the slope they sit on.</p>
-      <dl><dt>Owner</dt><dd>Singapore Island Country Club</dd>
-          <dt>Value</dt><dd>S$7,344,396</dd>
-          <dt>Workhead</dt><dd>CW01 / CW02</dd></dl>
+      <span class="w__year">Completed</span>
+      <h3>Mugliston Park Pumping Station — Demolition &amp; Grouting of Disused Pipelines</h3>
+      <dl><dt>Owner</dt><dd>Public Utilities Board (PUB)</dd>
+          <dt>Value</dt><dd>S$3,475,000</dd>
+          <dt>Speciality</dt><dd>Demolition</dd></dl>
     </div>
   </article>
 
   <article class="w" data-i="04">
-    <div class="w__no">04<span>&nbsp;/&nbsp;08</span></div>
-    <div class="w__media"><img src="../img/projects/tampines-boulevard.jpg" alt="Tampines Boulevard Park"></div>
+    <div class="w__no">04<span>&nbsp;/&nbsp;06</span></div>
+    <div class="w__media w__media--ph"><span class="w__ph-code">MSPS</span><span class="w__ph-note">Site photos to come</span></div>
     <div class="w__copy">
-      <span class="w__year">Opened Feb 2025</span>
-      <h3>Tampines Boulevard Park</h3>
-      <p>10.06&nbsp;hectares across two sections, separated by Tampines Avenue 12. Civil and landscape works for NParks. Officially opened on 22&nbsp;February&nbsp;2025.</p>
-      <dl><dt>Owner</dt><dd>National Parks Board (NParks)</dd>
-          <dt>Value</dt><dd>S$5,924,112</dd>
-          <dt>Status</dt><dd>Opened to public</dd></dl>
+      <span class="w__year">Ongoing</span>
+      <h3>Marina South Pump Sump 3 — Demolition &amp; Grouting of Abandoned Sewers</h3>
+      <dl><dt>Owner</dt><dd>Public Utilities Board (PUB)</dd>
+          <dt>Value</dt><dd>S$2,777,000</dd>
+          <dt>Speciality</dt><dd>Demolition</dd></dl>
     </div>
   </article>
 
   <article class="w" data-i="05">
-    <div class="w__no">05<span>&nbsp;/&nbsp;08</span></div>
-    <div class="w__media"><img src="../img/projects/bulim-landscape.jpg" alt="Bulim Phase 1 landscape"></div>
+    <div class="w__no">05<span>&nbsp;/&nbsp;06</span></div>
+    <div class="w__media w__media--ph"><span class="w__ph-code">JPS</span><span class="w__ph-note">Site photos to come</span></div>
     <div class="w__copy">
-      <span class="w__year">2023 — Ongoing</span>
-      <h3>Bulim Phase 1 — Landscape &amp; Associated Works</h3>
-      <p>Nominated sub-contract for the construction of infrastructure works at Bulim Phase 1, JTC's industrial expansion in Jurong West.</p>
-      <dl><dt>Owner</dt><dd>JTC Corporation</dd>
-          <dt>Value</dt><dd>S$4,221,332</dd>
-          <dt>Workhead</dt><dd>Landscape</dd></dl>
+      <span class="w__year">Ongoing</span>
+      <h3>Jurong Power Station — Demolition &amp; Land Return to JTC</h3>
+      <dl><dt>Owner</dt><dd>YTL PowerSeraya</dd>
+          <dt>Value</dt><dd>S$2,290,000</dd>
+          <dt>Speciality</dt><dd>Demolition</dd></dl>
     </div>
   </article>
 
   <article class="w" data-i="06">
-    <div class="w__no">06<span>&nbsp;/&nbsp;08</span></div>
-    <div class="w__media"><img src="../img/projects/kingfisher-bridge.jpg" alt="Kingfisher Wetland bridge"></div>
+    <div class="w__no">06<span>&nbsp;/&nbsp;06</span></div>
+    <div class="w__media w__media--ph"><span class="w__ph-code">BNF</span><span class="w__ph-note">Site photos to come</span></div>
     <div class="w__copy">
-      <span class="w__year">2018</span>
-      <h3>Kingfisher Wetland — Bay South, Gardens by the Bay</h3>
-      <p>Design and build of the Kingfisher Wetland and its arched timber bridge. A small contract; an outsized line in the portfolio.</p>
-      <dl><dt>Owner</dt><dd>Gardens by the Bay</dd>
-          <dt>Value</dt><dd>S$436,500</dd>
-          <dt>Workhead</dt><dd>Civil / Landscape</dd></dl>
+      <span class="w__year">Ongoing</span>
+      <h3>Bedok NEWater Factory — Demolition &amp; Land Reinstatement</h3>
+      <dl><dt>Owner</dt><dd>Public Utilities Board (PUB)</dd>
+          <dt>Value</dt><dd>S$3,788,002</dd>
+          <dt>Speciality</dt><dd>Demolition</dd></dl>
     </div>
   </article>
 
-  <article class="w" data-i="07">
-    <div class="w__no">07<span>&nbsp;/&nbsp;08</span></div>
-    <div class="w__media"><img src="../img/projects/sun-plaza.jpg" alt="Sun Plaza Park inclusive playground"></div>
-    <div class="w__copy">
-      <span class="w__year">2024 — Ongoing</span>
-      <h3>Sun Plaza Park — Inclusive Playground</h3>
-      <p>Design-and-build of the inclusive playground at Sun Plaza Park, with five years of subsequent maintenance for the play equipment.</p>
-      <dl><dt>Owner</dt><dd>National Parks Board (NParks)</dd>
-          <dt>Value</dt><dd>S$3,554,747</dd>
-          <dt>Workhead</dt><dd>Landscape · D&amp;B</dd></dl>
-    </div>
-  </article>
-
-  <article class="w" data-i="08">
-    <div class="w__no">08<span>&nbsp;/&nbsp;08</span></div>
-    <div class="w__media"><img src="../img/projects/margaret-drive.jpg" alt="Margaret Drive external works"></div>
-    <div class="w__copy">
-      <span class="w__year">2020</span>
-      <h3>Margaret Drive — External Works at Margaret Ville</h3>
-      <p>Asphalt premix and drainage works on the external roads serving the Margaret Ville development; in collaboration with LTA standards.</p>
-      <dl><dt>Owner</dt><dd>LTA / Margaret Ville</dd>
-          <dt>Value</dt><dd>S$695,577</dd>
-          <dt>Workhead</dt><dd>CR07 · Road</dd></dl>
-    </div>
-  </article>
-
-  <button class="works__more" type="button" data-action="register">See the full register, all 34 <span aria-hidden="true">↗</span></button>
+  <button class="works__more" type="button" data-action="register">+28 more — see the full register, all 34 <span aria-hidden="true">↗</span></button>
 </section>
 '''
 
-CAPS = '''<!-- CAPABILITIES -->
-<section class="caps" id="capabilities">
+SPECIALITIES = '''<!-- SPECIALITIES -->
+<section class="showcase showcase--stack" id="specialities">
   <header class="sec-head">
     <span class="sec-head__num">—</span>
-    <h2>Seven Capabilities</h2>
-    <span class="sec-head__meta">Six BCA-current + recovery</span>
+    <h2>Four disciplines, one team</h2>
+    <span class="sec-head__meta">Our specialities</span>
   </header>
-  <ol class="caps__list">
-    <li><span class="caps__no">i.</span><h3>Civil Engineering &amp; Earthworks</h3><p>For JTC, NParks, PUB and country-club developments.</p><span class="caps__grade">CW02 · B2</span></li>
-    <li><span class="caps__no">ii.</span><h3>Demolition &amp; Reinstatement</h3><p>Pumping stations, NEWater factories, power stations.</p><span class="caps__grade">CR03 · Single</span></li>
-    <li><span class="caps__no">iii.</span><h3>Piling Works &amp; ERSS</h3><p>Sheet piling for reservoirs and basements.</p><span class="caps__grade">CR08 / SB(PW)</span></li>
-    <li><span class="caps__no">iv.</span><h3>Reinforced Concrete</h3><p>Retaining walls, ponds, waterfalls, bridges, tunnels.</p><span class="caps__grade">CW01 · C3</span></li>
-    <li><span class="caps__no">v.</span><h3>Road, Pipe &amp; Premix</h3><p>Cable / pipe laying, road reinstatement, asphalt.</p><span class="caps__grade">CR07 · L1</span></li>
-    <li><span class="caps__no">vi.</span><h3>Waterproofing</h3><p>Buildings, basements, water-retaining structures.</p><span class="caps__grade">CR13 · L1</span></li>
-    <li><span class="caps__no">vii.</span><h3>Recycled Aggregate &amp; Recovery</h3><p>On-site crusher &amp; power screen turn demolition hardcore into clean, graded recycled aggregate — less to landfill, less hauled in.</p><span class="caps__grade">Circular · On-site</span></li>
-  </ol>
+  <div class="showcase__panel" id="civil">
+    <div class="showcase__lead">
+      <h3>Civil Engineering</h3>
+      <p>Earthworks, sheet-piled ERSS, slope stabilisation, drainage and road reinstatement — the groundwork beneath Singapore's public infrastructure.</p>
+      <div class="showcase__chips"><span>Earthworks</span><span>ERSS &amp; Sheet Piling</span><span>Slope Stabilisation</span><span>Drainage &amp; Premix</span><span>BCA CW02 · B2</span></div>
+    </div>
+    <div class="showcase__grid">
+      <figure class="sc-tile" style="--img:url('../img/hero/02-erss-basin.jpg')"><figcaption>Sheet-piled ERSS with strutting — Mugliston Park Pumping Station</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('../img/projects/margaret-drive.jpg')"><figcaption>External works, premix &amp; drainage — Margaret Drive</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('../img/projects/tampines-boulevard.jpg')"><figcaption>Earthworks &amp; park infrastructure — Tampines Boulevard Park</figcaption></figure>
+    </div>
+  </div>
+  <div class="showcase__panel" id="demolition">
+    <div class="showcase__lead">
+      <h3>Demolition</h3>
+      <p>Pumping stations, NEWater factories and power-station assets — taken down safely on live, constrained sites. Deep basements removed inside sheet-piled ERSS, disused pipelines grouted, and hardcore crushed on site into recycled aggregate.</p>
+      <div class="showcase__chips"><span>Deep Basement</span><span>Grouting</span><span>Pumping Stations</span><span>Recycled Aggregate</span><span>BCA CR03</span></div>
+    </div>
+    <div class="showcase__grid">
+      <figure class="sc-tile" style="--img:url('../img/projects/demolition-longreach.jpg')"><figcaption>Long-reach demolition of a steel-framed structure</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('../img/projects/demolition-basement.jpg')"><figcaption>Breaking out a deep basement</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('../img/projects/demolition-pit.jpg')"><figcaption>Basement removal inside ERSS — Mugliston Park Pumping Station</figcaption></figure>
+    </div>
+  </div>
+  <div class="showcase__panel" id="hardscape">
+    <div class="showcase__lead">
+      <h3>Hardscape</h3>
+      <p>Rubble walls, boardwalks, stone-clad steps and paving — the hard surfaces people walk on, built for parks, gardens and waterways.</p>
+      <div class="showcase__chips"><span>Rubble Wall</span><span>Boardwalk</span><span>Stone-clad Walls &amp; Steps</span><span>Paving</span></div>
+    </div>
+    <div class="showcase__grid">
+      <figure class="sc-tile" style="--img:url('../img/projects/kingfisher-bridge.jpg')"><figcaption>Boardwalk &amp; rock-edged pond — Kingfisher Wetland</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('../img/projects/kingfisher-path.jpg')"><figcaption>Natural-stone edging &amp; footpath — Kingfisher Wetland</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('../img/projects/abc-jurong-walls.jpg')"><figcaption>Stone-clad walls &amp; steps — ABC Waters, Jurong Canal</figcaption></figure>
+    </div>
+  </div>
+  <div class="showcase__panel" id="steel">
+    <div class="showcase__lead">
+      <h3>Steel Structures</h3>
+      <p>Bird hides, canal-side shelters and playground canopies — fabricated and erected under our BCA Specialist Builder (Structural Steelwork) licence, married to the civil works beneath them.</p>
+      <div class="showcase__chips"><span>Bird Hide</span><span>ABC Waters</span><span>Magical Bridge</span><span>BCA SB(SS)</span></div>
+    </div>
+    <div class="showcase__grid">
+      <figure class="sc-tile" style="--img:url('../img/projects/kingfisher-birdhide.jpg')"><figcaption>Bird hide — Kingfisher Wetland, Bay South</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('../img/projects/abc-jurong-shelter.jpg')"><figcaption>Canal-side shelter — ABC Waters, Jurong Canal</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('../img/projects/magical-bridge-canopy.jpg')"><figcaption>Flower canopies — Magical Bridge Playground, Sun Plaza Park</figcaption></figure>
+    </div>
+  </div>
 </section>
 '''
 
-CREDS = '''<!-- CREDENTIALS -->
+CREDS = '''<!-- AWARDS & CERTIFICATIONS -->
 <section class="creds" id="credentials">
   <header class="sec-head">
     <span class="sec-head__num">—</span>
-    <h2>Credentials</h2>
-    <span class="sec-head__meta">Verifiable, current</span>
+    <h2>Awards &amp; Certifications</h2>
+    <span class="sec-head__meta">ISO · BCA</span>
   </header>
   <div class="creds__grid">
-    <figure><img src="../img/certs/iso-9001.jpg" alt="ISO 9001:2015"><figcaption>ISO 9001:2015 — Quality Management</figcaption></figure>
-    <figure><img src="../img/certs/iso-14001.jpg" alt="ISO 14001:2015"><figcaption>ISO 14001:2015 — Environmental Management</figcaption></figure>
-    <figure><img src="../img/certs/green-gracious.png" alt="Green & Gracious Merit"><figcaption>BCA Green &amp; Gracious — Merit</figcaption></figure>
-    <figure><img src="../img/certs/progressive-wage.png" alt="Progressive Wage Mark"><figcaption>Progressive Wage Mark — MOM</figcaption></figure>
+    <figure><img src="../img/certs/iso-9001.jpg" alt="ISO 9001:2015 — Quality Management"><figcaption>ISO 9001:2015 — Quality Management</figcaption></figure>
+    <figure><img src="../img/certs/iso-14001.jpg" alt="ISO 14001:2015 — Environmental Management"><figcaption>ISO 14001:2015 — Environmental Management</figcaption></figure>
+    <figure><img src="../img/certs/iso-45001.jpg" alt="ISO 45001:2018 — Occupational Health &amp; Safety Management"><figcaption>ISO 45001:2018 — Occupational Health &amp; Safety Management</figcaption></figure>
+    <figure><img src="../img/certs/green-gracious.png" alt="BCA Green and Gracious Builder Award — Merit"><figcaption>BCA Green &amp; Gracious Builder — Merit</figcaption></figure>
   </div>
   <p class="creds__verify">UEN <code>200210947C</code> · Verify on the <a href="https://www1.bca.gov.sg/bca-directory" target="_blank" rel="noopener">BCA Directory →</a></p>
 </section>
@@ -411,92 +414,7 @@ STUDIO = '''<!-- STUDIO & PRACTICE -->
   <div class="about__grid">
     <p class="about__lead">Take pride of our works. <i>The best is yet to come.</i> — Mission Possible.</p>
     <p>Techno&nbsp;CE&nbsp;Pte&nbsp;Ltd was incorporated on 20&nbsp;December&nbsp;2002 (UEN&nbsp;200210947C). Today, ten people work from a single studio at D'Centennial in Geylang. We do not subcontract our project management. We are on the sites we build.</p>
-    <p>Our books are kept by an external auditor; our standards by ISO 9001 and ISO 14001; our wages by the Progressive Wage Mark; our manners on the construction site by the BCA Green &amp; Gracious framework, in which we hold the Merit recognition.</p>
-  </div>
-</section>
-'''
-
-SHOWCASE = '''<!-- SHOWCASE -->
-<section class="showcase" id="showcase">
-  <div class="showcase__tabs" role="tablist" aria-label="Showcase categories">
-    <button class="showcase__tab is-on" role="tab" aria-selected="true" id="sc-tab-demo" aria-controls="sc-panel-demo" data-panel="demo"><span class="showcase__tab-no">A</span>Demolition</button>
-    <button class="showcase__tab" role="tab" aria-selected="false" tabindex="-1" id="sc-tab-soft" aria-controls="sc-panel-soft" data-panel="soft"><span class="showcase__tab-no">B</span>Softscape</button>
-    <button class="showcase__tab" role="tab" aria-selected="false" tabindex="-1" id="sc-tab-steel" aria-controls="sc-panel-steel" data-panel="steel"><span class="showcase__tab-no">C</span>Steel Structure</button>
-    <button class="showcase__tab" role="tab" aria-selected="false" tabindex="-1" id="sc-tab-team" aria-controls="sc-panel-team" data-panel="team"><span class="showcase__tab-no">D</span>Team Spirit &amp; Well-being</button>
-  </div>
-  <div class="showcase__panel is-on" role="tabpanel" id="sc-panel-demo" aria-labelledby="sc-tab-demo" data-panel="demo">
-    <div class="showcase__lead">
-      <h3>Demolition</h3>
-      <p>Heavy take-down on live, constrained sites — pumping stations, NEWater factories and power-station assets, brought down safely and returned to ready-state.</p>
-      <div class="showcase__chips"><span>ERSS</span><span>Deep Basement</span><span>Tall Steel Structure</span></div>
-    </div>
-    <div class="showcase__grid">
-      <figure class="sc-tile" style="--img:url('../img/projects/demolition-pit.jpg')"><figcaption>ERSS &amp; deep-basement removal</figcaption></figure>
-      <figure class="sc-tile" style="--img:url('../img/hero/02-erss-basin.jpg')"><figcaption>Sheet-piled ERSS basin</figcaption></figure>
-      <figure class="sc-tile" style="--img:url('../img/projects/golf-aerial.jpg')"><figcaption>Site clearance &amp; earthwork</figcaption></figure>
-    </div>
-  </div>
-  <div class="showcase__panel" role="tabpanel" id="sc-panel-soft" aria-labelledby="sc-tab-soft" data-panel="soft" hidden>
-    <div class="showcase__lead">
-      <h3>Softscape</h3>
-      <p>The delicate end of the practice — parks, gardens and waterfront landscapes built to last and to be lived in, for NParks and Gardens by the Bay.</p>
-      <div class="showcase__chips"><span>Boardwalk</span><span>Stone-clad Wall</span><span>Shelters</span><span>Ponds &amp; Wetlands</span></div>
-    </div>
-    <div class="showcase__grid">
-      <figure class="sc-tile" style="--img:url('../img/projects/kingfisher-bridge.jpg')"><figcaption>Timber boardwalk &amp; arched bridge</figcaption></figure>
-      <figure class="sc-tile" style="--img:url('../img/projects/bulim-landscape.jpg')"><figcaption>Landscape &amp; stone-clad walls</figcaption></figure>
-      <figure class="sc-tile" style="--img:url('../img/projects/tampines-boulevard.jpg')"><figcaption>Tampines Boulevard Park, 10.06 ha</figcaption></figure>
-    </div>
-  </div>
-  <div class="showcase__panel" role="tabpanel" id="sc-panel-steel" aria-labelledby="sc-tab-steel" data-panel="steel" hidden>
-    <div class="showcase__lead">
-      <h3>Steel Structure</h3>
-      <p>Shelters, pavilions and walkway roofs — fabricated and erected to BCA SB(SS) standard, married to the civil works underneath them.</p>
-      <div class="showcase__chips"><span>ERSS</span><span>Shelters</span><span>Pavilions</span><span>Walkway Roofs</span></div>
-    </div>
-    <div class="showcase__grid">
-      <figure class="sc-tile" style="--img:url('../img/hero/03-kingfisher-pavilion.jpg')"><figcaption>Kingfisher pavilion, Bay South</figcaption></figure>
-      <figure class="sc-tile" style="--img:url('../img/projects/sentosa-pavilion.jpg')"><figcaption>Course pavilion &amp; shelter</figcaption></figure>
-      <figure class="sc-tile" style="--img:url('../img/projects/sun-plaza.jpg')"><figcaption>Inclusive playground steelwork</figcaption></figure>
-    </div>
-  </div>
-  <div class="showcase__panel" role="tabpanel" id="sc-panel-team" aria-labelledby="sc-tab-team" data-panel="team" hidden>
-    <div class="showcase__lead">
-      <h3>Team Spirit &amp; Well-being</h3>
-      <p>Ten people, long timesheets, one studio — and the outings, feasts and celebrations that keep a small team together year after year.</p>
-      <div class="showcase__chips"><span>Company Outings</span><span>Durian Fest</span><span>D&amp;D Night</span><span>Family Day</span></div>
-    </div>
-    <div class="showcase__grid">
-      <figure class="sc-tile sc-tile--ph"><span class="sc-tile__ico" aria-hidden="true">🚌</span><figcaption>Company outings — photos to be added</figcaption></figure>
-      <figure class="sc-tile sc-tile--ph"><span class="sc-tile__ico" aria-hidden="true">🍴</span><figcaption>Annual durian fest — photos to be added</figcaption></figure>
-      <figure class="sc-tile sc-tile--ph"><span class="sc-tile__ico" aria-hidden="true">🎉</span><figcaption>Dinner &amp; Dance — photos to be added</figcaption></figure>
-    </div>
-  </div>
-</section>
-'''
-
-MEDIA = '''<!-- MEDIA -->
-<section class="media" id="media">
-  <div class="media__intro">
-    <p class="media__lead">Our work moves — site reels, project time-lapses and the moments the agencies don't get to see.</p>
-    <p class="media__note">Sample tiles · final cuts to be embedded — TikTok, news features and our own production.</p>
-  </div>
-  <div class="media__grid">
-    <button class="vtile" type="button" aria-label="Play sample: site reel (placeholder)">
-      <span class="vtile__img" style="--img:url('../img/projects/demolition-pit.jpg')"></span>
-      <span class="vtile__play" aria-hidden="true"></span>
-      <span class="vtile__meta"><b>Own Production</b><span>Demolition site reel · 0:45</span></span>
-    </button>
-    <button class="vtile" type="button" aria-label="Play sample: news feature (placeholder)">
-      <span class="vtile__img" style="--img:url('../img/projects/tampines-boulevard.jpg')"></span>
-      <span class="vtile__play" aria-hidden="true"></span>
-      <span class="vtile__meta"><b>In the Media</b><span>Tampines Boulevard Park opening</span></span>
-    </button>
-    <button class="vtile" type="button" aria-label="Play sample: TikTok clip (placeholder)">
-      <span class="vtile__img" style="--img:url('../img/projects/kingfisher-bridge.jpg')"></span>
-      <span class="vtile__play" aria-hidden="true"></span>
-      <span class="vtile__meta"><b>TikTok · @technoce</b><span>Building Bay South, in 30 seconds</span></span>
-    </button>
+    <p>Our books are kept by an external auditor; our standards by ISO 9001, ISO 14001 and ISO 45001; our manners on the construction site by the BCA Green &amp; Gracious framework, in which we hold the Merit recognition.</p>
   </div>
 </section>
 '''
@@ -505,9 +423,9 @@ NEWS = '''<!-- NEWSROOM -->
 <section class="news" id="newsroom">
   <div class="news__grid">
     <article class="post">
-      <span class="post__date">Feb 2025</span>
-      <h3>Tampines Boulevard Park opens to the public</h3>
-      <p>Our 10.06-hectare park construction for NParks — across two sections split by Tampines Avenue 12 — officially opened on 22 February 2025.</p>
+      <span class="post__date">Jun 2026</span>
+      <h3>Magical Bridge Playground opens at Sun Plaza Park</h3>
+      <p>Our inclusive playground contract for NParks — home to Singapore's first wheelchair-user accessible slide — officially opened on 17 June 2026.</p>
       <span class="post__tag">Project · NParks</span>
     </article>
     <article class="post">
@@ -523,10 +441,10 @@ NEWS = '''<!-- NEWSROOM -->
       <span class="post__tag">Sustainability</span>
     </article>
     <article class="post">
-      <span class="post__date">Recognised</span>
-      <h3>BCA Green &amp; Gracious Builder — Merit</h3>
-      <p>Recognised for environmental care and good site conduct, alongside our ISO 9001, ISO 14001 and Progressive Wage Mark.</p>
-      <span class="post__tag">Award · BCA</span>
+      <span class="post__date">Jun 2025</span>
+      <h3>ISO 45001 joins ISO 9001 &amp; ISO 14001</h3>
+      <p>Our occupational health &amp; safety management system is certified to ISO 45001:2018 — alongside quality and environmental — for the provision of civil engineering services.</p>
+      <span class="post__tag">Certification · ISO</span>
     </article>
   </div>
   <p class="news__note">Sample headlines drawn from real milestones — to be replaced with live posts &amp; media coverage.</p>
@@ -539,7 +457,7 @@ CAREERS = '''<!-- CAREERS -->
     <div class="careers__intro">
       <h3>A small team, on real sites.</h3>
       <p>We don't subcontract our project management — we are on the sites we build. If you want responsibility early, fair wages and work you can point to from the road, talk to us.</p>
-      <p class="careers__perk">Progressive Wage Mark employer · structured training · on-site mentoring</p>
+      <p class="careers__perk">Structured training · on-site mentoring · ISO 45001 safety system</p>
     </div>
     <ul class="careers__roles">
       <li><span class="careers__role-k">Open</span><h4>Project Engineer — Civil &amp; Demolition</h4><span class="careers__loc">Geylang HQ &amp; sites · Full-time</span></li>
@@ -575,52 +493,36 @@ CONTACT = '''<!-- CONTACT -->
 PAGES = {
  "index.html": page("home",
     "Techno CE — Quiet civil engineering. Singapore. Since 2002.",
-    "Techno CE Pte Ltd — civil engineering for parks, gardens, golf courses, demolition and infrastructure across Singapore. Since 2002.",
+    "Techno CE Pte Ltd is a Singapore civil engineering firm — civil engineering, demolition, hardscape and steel structures. BCA CW02 B2 / CW01 C3. ISO 9001, 14001 &amp; 45001.",
     "", HERO + INDEX + NUM + PULLQUOTE + clients_block() + CTA_BAND),
 
  "about.html": page("about",
-    "About — Techno CE",
-    "Vision, mission, motto and core values of Techno CE Pte Ltd — a ten-person Singapore civil engineering practice since 2002.",
+    "About Us — Techno CE",
+    "Vision, mission, core values, awards and certifications of Techno CE Pte Ltd — a ten-person Singapore civil engineering practice since 2002.",
     "about.html",
-    pagehead("About", "A quiet practice,<br>since 2002.",
+    pagehead("About Us", "A quiet practice,<br>since 2002.",
         "Vision, mission, values — and the ten people who keep them.")
     + VMM + VALUES + STUDIO + CREDS),
 
  "services.html": page("services",
     "Services — Techno CE",
-    "Seven capabilities: civil engineering, demolition, piling & ERSS, reinforced concrete, roads, waterproofing and recycled aggregate recovery.",
+    "Our specialities: civil engineering, demolition (deep basement, grouting), hardscape (rubble wall, boardwalk) and steel structures.",
     "services.html",
-    pagehead("Services", "Seven capabilities.",
-        "Six BCA-current workheads — and a crusher line that closes the loop.")
-    + CAPS),
+    pagehead("Services", "Our specialities.",
+        "Civil engineering, demolition, hardscape and steel structures — delivered by our own team.")
+    + SPECIALITIES),
 
  "projects.html": page("projects",
     "Projects — Techno CE",
-    "34 contracts for PUB, NParks, JTC, LTA, MOE, Sentosa, SICC and the country clubs.",
+    "A glimpse of our projects — Magical Bridge Playground, ABC Waters at Jurong Canal, and demolition for PUB's pumping stations, Bedok NEWater Factory and Jurong Power Station.",
     "projects.html",
-    pagehead("Projects", "Present &amp; past.",
-        "Thirty-four contracts for the agencies that build Singapore.")
-    + WORKS),
-
- "showcase.html": page("showcase",
-    "Showcase — Techno CE",
-    "What we're known for: demolition, softscape, steel structure, and the team behind it.",
-    "showcase.html",
-    pagehead("Showcase", "What we're<br>known for.",
-        "Four sides of the practice — pick one.")
-    + SHOWCASE),
-
- "media.html": page("media",
-    "Media — Techno CE",
-    "Our work in motion — site reels, project time-lapses, news features and our own production.",
-    "media.html",
-    pagehead("Media", "In motion.",
-        "Site reels, time-lapses and the moments the agencies don't see.")
-    + MEDIA),
+    pagehead("Projects", "A glimpse of our work.",
+        "Six contracts that show what we do best — for PUB, NParks and YTL PowerSeraya.")
+    + GLIMPSE),
 
  "newsroom.html": page("newsroom",
     "Newsroom — Techno CE",
-    "Latest from site — awards, project milestones and sustainability news from Techno CE.",
+    "Latest from site — project openings, contracts and certifications from Techno CE.",
     "newsroom.html",
     pagehead("Newsroom", "Latest from site.",
         "Awards, milestones and what's new on our sites.")
@@ -628,17 +530,17 @@ PAGES = {
 
  "careers.html": page("careers",
     "Careers — Techno CE",
-    "Join a small team on real sites. Progressive Wage Mark employer, structured training, on-site mentoring.",
+    "Join a small team on real sites. Structured training, on-site mentoring and an ISO 45001 safety system.",
     "careers.html",
     pagehead("Careers", "Build with us.",
         "Responsibility early, fair wages, and work you can point to.")
     + CAREERS),
 
  "contact.html": page("contact",
-    "Contact — Techno CE",
+    "Contact Us — Techno CE",
     "Have a project? Phone +65 6745 5725, email technoce@singnet.com.sg, office at 100 Lorong 23 Geylang.",
     "contact.html",
-    pagehead("Contact", "Have a project?",
+    pagehead("Contact Us", "Have a project?",
         "We read every brief. Tell us what you're building — or taking down.")
     + CONTACT + clients_block()),
 }

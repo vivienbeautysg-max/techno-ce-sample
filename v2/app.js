@@ -19,45 +19,6 @@
 
   // ---------- Scroll reveal handled in premium.js (shared motion layer) ----------
 
-  // ---------- Showcase category tabs ----------
-  const scTabs=$$('.showcase__tab');
-  const scPanels=$$('.showcase__panel');
-  const showPanel=(key)=>{
-    scTabs.forEach(t=>{
-      const on=t.dataset.panel===key;
-      t.classList.toggle('is-on',on);
-      t.setAttribute('aria-selected',on?'true':'false');
-      t.tabIndex=on?0:-1;
-    });
-    scPanels.forEach(p=>{
-      const on=p.dataset.panel===key;
-      p.classList.toggle('is-on',on);
-      if(on){p.removeAttribute('hidden');} else {p.setAttribute('hidden','');}
-    });
-  };
-  scTabs.forEach((tab,i)=>{
-    tab.addEventListener('click',()=>showPanel(tab.dataset.panel));
-    tab.addEventListener('keydown',(e)=>{
-      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
-      e.preventDefault();
-      const dir=e.key==='ArrowRight'?1:-1;
-      const next=scTabs[(i+dir+scTabs.length)%scTabs.length];
-      showPanel(next.dataset.panel); next.focus();
-    });
-  });
-
-  // ---------- Media tiles (sample placeholders — honest feedback) ----------
-  $$('.vtile').forEach(v=>{
-    v.addEventListener('click',()=>{
-      if(v.querySelector('.vtile__hint')) return;
-      const hint=document.createElement('span');
-      hint.className='vtile__hint';
-      hint.textContent='Sample tile — final video to be embedded';
-      v.appendChild(hint);
-      setTimeout(()=>hint.remove(),2200);
-    });
-  });
-
   // ---------- Mobile burger ----------
   const burger=$('#burger'),navLinks=$('#navLinks');
   if(burger&&navLinks){
