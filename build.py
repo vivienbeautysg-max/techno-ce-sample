@@ -52,12 +52,12 @@ def head(title, desc, canon):
 <meta property="og:locale" content="en_SG" />
 <meta property="og:title" content="{title}" />
 <meta property="og:description" content="{desc}" />
-<meta property="og:image" content="{BASE}img/hero/01-magical-bridge.jpg" />
+<meta property="og:image" content="{BASE}img/hero/ph-about.jpg" />
 <meta property="og:url" content="{BASE}{canon}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{title}" />
 <meta name="twitter:description" content="{desc}" />
-<meta name="twitter:image" content="{BASE}img/hero/01-magical-bridge.jpg" />
+<meta name="twitter:image" content="{BASE}img/hero/ph-about.jpg" />
 <script type="application/ld+json">
 {JSONLD}
 </script>
@@ -101,7 +101,8 @@ def nav(active):
 
 
 def pagehead(tag_right, title_html, sub, img):
-    return f'''<section class="pagehead" style="--img:url('{img}')">
+    img_m = img.replace('.jpg', '-m.jpg')   # tall crop served to phones
+    return f'''<section class="pagehead" style="--img:url('{img}');--img-m:url('{img_m}')">
   <div class="rule rule--light pagehead__rule">
     <span class="rule-tag">TECHNO CE</span>
     <span class="rule-line"></span>
@@ -156,9 +157,9 @@ def page(active, title, desc, canon, body):
 HERO = '''<!-- HERO -->
 <section class="hero">
   <div class="hero__media" id="heroMedia">
-    <div class="hero__slide is-active" style="background-image:url('img/hero/01-magical-bridge.jpg')"></div>
-    <div class="hero__slide" style="background-image:url('img/hero/02-erss-basin.jpg')"></div>
-    <div class="hero__slide" style="background-image:url('img/hero/03-kingfisher-wetland.jpg')"></div>
+    <div class="hero__slide is-active" style="--img:url('img/hero/a1-kingfisher.jpg');--img-m:url('img/hero/a1-kingfisher-m.jpg')"></div>
+    <div class="hero__slide" style="--img:url('img/hero/a2-tampines.jpg');--img-m:url('img/hero/a2-tampines-m.jpg')"></div>
+    <div class="hero__slide" style="--img:url('img/hero/a3-bulim.jpg');--img-m:url('img/hero/a3-bulim-m.jpg')"></div>
     <div class="hero__veil"></div>
   </div>
   <div class="hero__rule">
@@ -184,7 +185,7 @@ HERO = '''<!-- HERO -->
       </div>
       <div class="hero__caption" id="heroCaption">
         <span class="caption-num">01 / 03</span>
-        <span class="caption-text">Magical Bridge Playground — Sun Plaza Park, NParks</span>
+        <span class="caption-text">Kingfisher Wetland — Bay South, Gardens by the Bay</span>
       </div>
     </div>
   </div>
@@ -330,7 +331,7 @@ SPECIALITIES = '''<!-- SPECIALITIES -->
     <div class="showcase__grid">
       <figure class="sc-tile" style="--img:url('img/projects/t-demo-mugliston.jpg')"><figcaption>Basement floor removal inside ERSS — Mugliston Park Pumping Station</figcaption></figure>
       <figure class="sc-tile" style="--img:url('img/projects/t-demo-longreach.jpg')"><figcaption>Long-reach demolition — our own fleet</figcaption></figure>
-      <figure class="sc-tile" style="--img:url('img/projects/t-demo-basement.jpg')"><figcaption>Breaking out a deep basement</figcaption></figure>
+      <figure class="sc-tile" style="--img:url('img/projects/t-demo-basement.jpg')"><figcaption>Hydraulic breaking — our own demolition fleet</figcaption></figure>
     </div>
   </div>
   <div class="showcase__panel" id="hardscape">
@@ -626,7 +627,7 @@ PAGES = {
     "about.html",
     pagehead("ABOUT US", "Two hands,<br>one practice.",
         "A Singapore civil engineering contractor since 2002 — our own supervisors, our own plant.",
-        "img/hero/03-kingfisher-pavilion.jpg")
+        "img/hero/ph-about.jpg")
     + MANIFESTO + ABOUT_BODY + CREDS),
 
  "services.html": page("services",
@@ -635,7 +636,7 @@ PAGES = {
     "services.html",
     pagehead("SERVICES", "Our Specialities",
         "Civil engineering, demolition, hardscape and steel structures — delivered by our own team.",
-        "img/projects/t-demo-longreach.jpg")
+        "img/hero/ph-services.jpg")
     + SPECIALITIES),
 
  "projects.html": page("projects",
@@ -644,7 +645,7 @@ PAGES = {
     "projects.html",
     pagehead("PROJECTS", "A Glimpse of Our Work",
         "Six of our thirty contracts — for PUB, NParks, JTC and Gardens by the Bay.",
-        "img/hero/02-erss-basin.jpg")
+        "img/hero/ph-projects.jpg")
     + GLIMPSE),
 
  "newsroom.html": page("newsroom",
@@ -653,7 +654,7 @@ PAGES = {
     "newsroom.html",
     pagehead("NEWSROOM", "Latest From Site",
         "Awards, milestones and what's new on our sites.",
-        "img/projects/bulim-landscape.jpg")
+        "img/hero/ph-newsroom.jpg")
     + NEWS),
 
  "careers.html": page("careers",
@@ -662,7 +663,7 @@ PAGES = {
     "careers.html",
     pagehead("CAREERS", "Build With Us",
         "Responsibility early, fair wages, and work you can point to.",
-        "img/hero/01-magical-bridge.jpg")
+        "img/hero/ph-careers.jpg")
     + CAREERS),
 
  "contact.html": page("contact",
@@ -671,7 +672,7 @@ PAGES = {
     "contact.html",
     pagehead("CONTACT US", "Have A Project?",
         "We read every brief. Tell us what you're building — or taking down.",
-        "img/projects/abc-jurong-shelter.jpg")
+        "img/hero/ph-contact.jpg")
     + CONTACT_BODY + clients_block()),
 }
 

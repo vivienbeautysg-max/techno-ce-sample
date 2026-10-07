@@ -23,9 +23,21 @@ No golf-course photography (client request: it implies golf-course work).
   Company Profile 2026 Revision 1, pp. 31–33)
 - `img/` — curated photography. Sources: `X:\TCE\TCE_Company Profile_2026_R1.pdf`
   (extracted to `X:\TCE\_extracted_r1\`) and higher-resolution originals of the same
-  photos from the Mar 2026 profile (`X:\TCE\_extracted\`). Sizes: hero ≤1920w,
-  speciality tiles 4:3 ≤960w (`t-*.jpg`), project cards 4:5 ≤900×1125 (`c-*.jpg`);
-  never upscaled.
+  photos from the Mar 2026 profile (`X:\TCE\_extracted\`). Never upscaled.
+  - Full-bleed slots (Variant A hero `hero/a*.jpg`, page headers `hero/ph-*.jpg`) use
+    only the 3300–4400px originals; each has a `-m.jpg` tall crop served to phones.
+  - Variant B hero: 4:5 portrait (`hero/b*.jpg`) + 5:4 landscape (`-l.jpg`, ≤1100px)
+    via `<picture>`.
+  - Speciality tiles 4:3 ≤960w (`t-*.jpg`), project cards 4:5 ≤900×1125 (`c-*.jpg`).
+  - Low-resolution R1 photos (≈700–850px, e.g. Magical Bridge) are used only at card
+    or tile size, never full-bleed.
+
+## Photo-fit check (run after any image or layout change)
+Open any page of the local preview, then in the browser console:
+`await import('/tools/img-audit.js'); (await TCE_imgAudit()).filter(r => !r.ok)`
+(or load the file with a `<script>` tag). It renders all 14 pages at 8 screen sizes
+(1280×800@1 … 375×812@3) and lists every photo that would be shown larger than its
+pixels (×1.25) or cropped below 40%. Expected result: an empty list.
 
 > The `.html` pages are **generated** by the `build.py` scripts. Edit content in
 > the generator, then re-run it — don't hand-edit the pages.

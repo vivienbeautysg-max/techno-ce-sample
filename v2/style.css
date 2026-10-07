@@ -809,3 +809,30 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:300;letter-spacing:-0.0
   .marquee__dup{display:none}
   .r-up,.r-fade,.r-img,.r-mask{opacity:1 !important;transform:none !important;clip-path:none !important}
 }
+
+/* Photo fit (Oct 2026) — every large photo gets a source shaped and sized for
+   its box (see ../tools/img-audit.js). Desktop hero art is a fixed 4:5 frame
+   instead of stretching to the viewport height (which turned landscape photos
+   into narrow, upscaled strips on tall screens). */
+@media screen and (min-width:1101px){
+  .hero{min-height:auto;align-items:center}
+  .hero__art{aspect-ratio:4/5;align-self:center}
+}
+.w__media{max-width:32rem;justify-self:end}
+.w:nth-of-type(even) .w__media{justify-self:start}
+@media screen and (max-width:780px){
+  .w:nth-of-type(n) .w__media{justify-self:start}
+}
+/* Tablets: keep certificates and speciality tiles near their source size */
+@media screen and (max-width:1100px){
+  .creds__grid{grid-template-columns:repeat(3,1fr)}
+}
+@media screen and (max-width:600px){
+  .creds__grid{grid-template-columns:1fr 1fr;gap:1rem}
+}
+@media screen and (min-width:480px) and (max-width:780px){
+  .showcase__grid{grid-template-columns:repeat(2,1fr)}
+}
+/* Headline: "of civil engineering." is one unbreakable line; cap the size so
+   it fits its 620px measure on wide screens (it was clipped from 1600px up). */
+.hero__h{font-size:clamp(3.2rem,7vw,6.3rem)}

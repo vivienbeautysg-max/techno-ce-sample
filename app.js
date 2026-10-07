@@ -19,9 +19,9 @@
   // ---------- Hero slideshow ----------
   const slides=$$('.hero__slide');
   const captions=[
-    {n:'01 / 03', t:'Magical Bridge Playground — Sun Plaza Park, NParks'},
-    {n:'02 / 03', t:'Deep-basement removal in sheet-piled ERSS — Mugliston Park Pumping Station, PUB'},
-    {n:'03 / 03', t:'Kingfisher Wetland — Bay South, Gardens by the Bay'}
+    {n:'01 / 03', t:'Kingfisher Wetland — Bay South, Gardens by the Bay'},
+    {n:'02 / 03', t:'Tampines Boulevard Park — NParks'},
+    {n:'03 / 03', t:'Shelters along the estate spine — JTC Bulim Phase 1'}
   ];
   const capEl=$('#heroCaption');
   let idx=0;

@@ -217,6 +217,7 @@ p{margin:0}
 .hero__media{position:absolute;inset:0;z-index:0}
 .hero__slide{
   position:absolute;inset:0;
+  background-image:var(--img);
   background-size:cover;background-position:center;
   opacity:0;transition:opacity 1.4s ease;
   transform:scale(1.04);
@@ -1530,4 +1531,18 @@ p{margin:0}
   .contact__cta{flex-direction:column;align-items:flex-start;gap:.5rem;font-size:1.05rem}
   .about__col{padding:2rem 1rem}
   .about__col h3{font-size:clamp(1.6rem,7vw,2.2rem)}
+}
+
+/* Photo fit (Oct 2026): each large slot gets a source shaped and sized for its
+   box — see tools/img-audit.js. Phones get tall crops; wide screens cap the hero
+   height so landscape originals are never stretched past their pixels. */
+@media screen and (min-width:721px){
+  .hero{min-height:min(100svh,62vw)}
+}
+@media screen and (max-width:720px){
+  .hero__slide{background-image:var(--img-m,var(--img))}
+  .pagehead::before{background-image:var(--img-m,var(--img,none))}
+}
+@media screen and (min-width:480px) and (max-width:720px){
+  .showcase__grid{grid-template-columns:repeat(2,1fr)}
 }
