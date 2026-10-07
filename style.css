@@ -631,7 +631,7 @@ p{margin:0}
   padding:0 var(--pad-x);align-items:start;
 }
 .creds__certs{
-  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
 }
 .creds__certs figure{
   margin:0;
@@ -1119,7 +1119,7 @@ p{margin:0}
 }
 .values__list{
   list-style:none;margin:0;padding:0;
-  display:grid;grid-template-columns:repeat(5,1fr);
+  display:grid;grid-template-columns:repeat(4,1fr);
 }
 .values__list li{
   padding:1.5rem clamp(1rem,1.5vw,1.5rem) 1.5rem 0;

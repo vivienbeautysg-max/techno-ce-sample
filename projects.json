@@ -1,44 +1,280 @@
 {
-  "stats": {
-    "yearsSinceFounded": 23,
-    "totalProjects": 33,
-    "totalContractValueSGD": 94400000,
-    "bcaWorkheads": 6
+ "source": "TCE Company Profile 2026, Revision 1 (Sep 2026), pp. 31-33",
+ "stats": {
+  "contracts": 30,
+  "aggregateContractValueSGD": 62556860.47,
+  "bcaWorkheads": 5
+ },
+ "projects": [
+  {
+   "sn": 1,
+   "status": "completed",
+   "title": "Sun Plaza Park — Magical Bridge Inclusive Playground (design & build, incl. 5 years' maintenance of play equipment)",
+   "scope": "landscape",
+   "value": 3554747.0,
+   "owner": "NParks",
+   "client": "NParks"
   },
-  "projects": [
-    {"id":1,"year":"2024","status":"ongoing","title":"DTSS Phase 2 — Flow Diversion & Demolition, Contract 1","scope":"demolition","value":9455000,"owner":"Public Utilities Board (PUB)","client":"PUB","img":"","featured":true},
-    {"id":2,"year":"2022","status":"completed","title":"Sentosa Golf Club — Tanjong Course Redevelopment (Earthwork & RC: Bridge & Tunnel)","scope":"civil","value":7412842,"owner":"Sentosa Golf Club","client":"TEHC International","img":"","featured":false},
-    {"id":3,"year":"2021","status":"completed","title":"Singapore Island Country Club — Redevelopment (Earthwork & RC Retaining Wall)","scope":"civil","value":7344396,"owner":"Singapore Island Country Club","client":"TEHC International","img":"","featured":false},
-    {"id":4,"year":"2024","status":"ongoing","title":"Tampines Boulevard Park — 10.06 ha Park Construction (opened 22 Feb 2025)","scope":"landscape","value":5924112,"owner":"NParks","client":"TEHC International","img":"img/projects/tampines-boulevard.jpg","featured":true},
-    {"id":5,"year":"2021","status":"completed","title":"Seletar Country Club — Golf Course Renovation, Civil Works (incl. sheet piling for waterfall & pond)","scope":"civil","value":5980785,"owner":"Seletar Country Club","client":"TEHC International","featured":false},
-    {"id":6,"year":"2020","status":"completed","title":"Tanah Merah Country Club — Tampines Course (RC works incl. sheet piling for waterfall & pond)","scope":"civil","value":4845992,"owner":"Tanah Merah Country Club","client":"TEHC International","featured":false},
-    {"id":7,"year":"2019","status":"completed","title":"Tanah Merah Country Club — Garden Course (Civil & Structural, Earthwork & RC Retaining Wall)","scope":"civil","value":4736540,"owner":"Tanah Merah Country Club","client":"TEHC International","featured":false},
-    {"id":8,"year":"2023","status":"ongoing","title":"Bulim Phase 1 — Landscape & Associated Works (NSC)","scope":"landscape","value":4221332,"owner":"JTC Corporation","client":"TEHC International","img":"img/projects/bulim-landscape.jpg","featured":true},
-    {"id":9,"year":"2024","status":"ongoing","title":"Bedok NEWater Factory — Demolition & Land Reinstatement","scope":"demolition","value":3788003,"owner":"PUB","client":"PUB","featured":false},
-    {"id":10,"year":"2024","status":"ongoing","title":"Sun Plaza Park — Magical Bridge Inclusive Playground (incl. 5y maintenance of play equipment)","scope":"landscape","value":3554747,"owner":"NParks","client":"NParks","img":"img/projects/sun-plaza.jpg","featured":true},
-    {"id":11,"year":"2021","status":"completed","title":"Mugliston Park Pumping Station — Demolition + Sheet-piling ERSS for basement removal","scope":"demolition","value":3475000,"owner":"PUB","client":"PUB","featured":false},
-    {"id":12,"year":"2019","status":"completed","title":"ABC Waters Project at Jurong Canal — PIE to Boon Lay Way","scope":"civil","value":2877000,"owner":"PUB","client":"PUB","featured":false},
-    {"id":13,"year":"2024","status":"ongoing","title":"Marina South Pump Sump 3 — Demolition + Grout abandoned sewers (Yio Chu Kang / Kranji / Canberra)","scope":"demolition","value":2777000,"owner":"PUB","client":"PUB","featured":false},
-    {"id":14,"year":"2018","status":"completed","title":"Nee Soon Pumping Station — Demolition (Earthwork & ERSS)","scope":"demolition","value":2580000,"owner":"PUB","client":"PUB","featured":false},
-    {"id":15,"year":"2024","status":"ongoing","title":"Jurong Power Station — Demolition, Disposal, Reinstatement for Land Return to JTC","scope":"demolition","value":2290000,"owner":"YTL PowerSeraya","client":"YTL PowerSeraya","featured":false},
-    {"id":16,"year":"2021","status":"completed","title":"Siloso Point Cable Car Station — Slope Stabilisation + Drainage Improvement Tanjong Beach Walk","scope":"civil","value":1617317,"owner":"Sentosa Development Corporation","client":"TEHC International","featured":false},
-    {"id":17,"year":"2022","status":"completed","title":"Founder's Memorial Station / TEL Construction — GBB North Carpark + Demolition (Sub-contract)","scope":"civil","value":1491850,"owner":"LTA","client":"China Railway First Group","featured":false},
-    {"id":18,"year":"2020","status":"completed","title":"Margaret Drive (Margaret Ville) — External Asphalt Premix & Drainage","scope":"road","value":695577,"owner":"LTA / Margaret Ville","client":"TPS Construction","img":"img/projects/margaret-drive.jpg","featured":true},
-    {"id":19,"year":"2018","status":"completed","title":"Design and Build of Kingfisher Wetland — Bay South, Gardens by the Bay","scope":"landscape","value":436500,"owner":"Gardens by the Bay","client":"TEHC International","img":"img/projects/kingfisher-bridge.jpg","featured":true},
-    {"id":20,"year":"2023","status":"completed","title":"Design & Build a Tropical Serene Garden — Bay South, GBB (Civil & Structure)","scope":"landscape","value":663680,"owner":"Gardens by the Bay","client":"TEHC International","featured":false},
-    {"id":21,"year":"2022","status":"completed","title":"NTU Yunnan Garden — Pond Liner Work","scope":"civil","value":550678,"owner":"NTU","client":"Zheng Keng / TEHC","featured":false},
-    {"id":22,"year":"2021","status":"completed","title":"Sentosa Golf Club — Serapong Course Upgrading, Civil Works","scope":"civil","value":560108,"owner":"Sentosa Golf Club","client":"TEHC International","featured":false},
-    {"id":23,"year":"2020","status":"completed","title":"TMCC Tampines Club House — External Asphalt Premix & Drainage","scope":"road","value":569730,"owner":"Tanah Merah Country Club","client":"SH Design & Build","featured":false},
-    {"id":24,"year":"2020","status":"completed","title":"ERSS Sheet Piling Works at Lower Seletar Reservoir","scope":"piling","value":558444,"owner":"PUB","client":"Project Builder","featured":false},
-    {"id":25,"year":"2018","status":"completed","title":"Marina LTA T302 Thomson-East Coast Line — Premix at Maintenance Road & Drainage","scope":"road","value":478419,"owner":"LTA","client":"China Railway First Group","featured":false},
-    {"id":26,"year":"2020","status":"completed","title":"10 Bukit Chermin Road — Demolition & Land Reinstatement","scope":"demolition","value":392252,"owner":"Keppel Club","client":"Keppel Club","featured":false},
-    {"id":27,"year":"2019","status":"completed","title":"Calshot Road — Demolition & RC Work","scope":"demolition","value":365000,"owner":"Eagle Asia","client":"Fong Soon Engineering","featured":false},
-    {"id":28,"year":"2018","status":"completed","title":"Cleantech Park — Earthwork","scope":"civil","value":300000,"owner":"Hock Lim Engineering","client":"TEHC International","featured":false},
-    {"id":29,"year":"2017","status":"completed","title":"NSRCC — Reconstruction of Hole 16 & 17, RC Work","scope":"civil","value":201540,"owner":"NSRCC","client":"TEHC International","featured":false},
-    {"id":30,"year":"2017","status":"completed","title":"Park Connectors Term Contract — Natural Trails Work","scope":"landscape","value":400200,"owner":"NParks","client":"Digo Building Construction","featured":false},
-    {"id":31,"year":"2018","status":"completed","title":"J106 Boon Lay Station — Site Preparation Earthwork","scope":"civil","value":141609,"owner":"LTA","client":"Jia Yuan Engineering","featured":false},
-    {"id":32,"year":"2017","status":"completed","title":"6B Dyson Road — Sheet piling & Earthwork (2-storey semi-detached with basement)","scope":"piling","value":71000,"owner":"Private","client":"21A Construction","featured":false},
-    {"id":33,"year":"2019","status":"completed","title":"Faber Walk — Milling and Resurfacing (Asphalt Premix Works)","scope":"road","value":72210,"owner":"LTA / Waterfront @ Faber","client":"World Class Land","featured":false},
-    {"id":34,"year":"2017","status":"completed","title":"Changkat Primary School (Simei St 3) — A&A Earthwork","scope":"civil","value":38000,"owner":"MOE","client":"NewCon Builders","featured":false}
-  ]
+  {
+   "sn": 2,
+   "status": "completed",
+   "title": "Founders' Memorial Station & Tunnels, Thomson-East Coast Line — GBB North Carpark construction & demolition of existing carpark",
+   "scope": "demolition",
+   "value": 1491850.27,
+   "owner": "LTA",
+   "client": "China Railway First Group"
+  },
+  {
+   "sn": 3,
+   "status": "ongoing",
+   "title": "Bulim Phase 1 — Landscape & Associated Works (nominated sub-contract)",
+   "scope": "landscape",
+   "value": 4221332.8,
+   "owner": "JTC",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 4,
+   "status": "completed",
+   "title": "Tampines Boulevard Park — Park Development",
+   "scope": "landscape",
+   "value": 5924112.0,
+   "owner": "NParks",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 5,
+   "status": "completed",
+   "title": "Siloso Point Cable Car Station — Slope Stabilisation; Tanjong Beach Walk — Drainage Improvement",
+   "scope": "civil",
+   "value": 1617317.0,
+   "owner": "Sentosa Development Corporation",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 6,
+   "status": "completed",
+   "title": "10 Bukit Chermin Road — Demolition & Land Reinstatement",
+   "scope": "demolition",
+   "value": 392252.0,
+   "owner": "Keppel Club",
+   "client": "Keppel Club"
+  },
+  {
+   "sn": 7,
+   "status": "completed",
+   "title": "ABC Waters Project at Jurong Canal (PIE to Boon Lay Way)",
+   "scope": "civil",
+   "value": 2877000.0,
+   "owner": "PUB",
+   "client": "PUB"
+  },
+  {
+   "sn": 8,
+   "status": "completed",
+   "title": "Mugliston Park Pumping Station — Demolition & Grouting of Disused Pipelines (sheet-piled ERSS to remove basement floor)",
+   "scope": "demolition",
+   "value": 3475000.0,
+   "owner": "PUB",
+   "client": "PUB"
+  },
+  {
+   "sn": 9,
+   "status": "completed",
+   "title": "Margaret Drive (Margaret Ville) — External Works, Asphalt Premix & Drainage",
+   "scope": "road",
+   "value": 695577.0,
+   "owner": "LTA / Margaret Ville",
+   "client": "TPS Construction"
+  },
+  {
+   "sn": 10,
+   "status": "completed",
+   "title": "Lower Seletar Reservoir — ERSS Sheet Piling Works",
+   "scope": "piling",
+   "value": 558443.9,
+   "owner": "PUB",
+   "client": "Project Builder"
+  },
+  {
+   "sn": 11,
+   "status": "completed",
+   "title": "6B Dyson Road — 2-Storey Semi-Detached House with Basement: Sheet Piling & Earthworks",
+   "scope": "piling",
+   "value": 71000.0,
+   "owner": "Private owner",
+   "client": "21A Construction"
+  },
+  {
+   "sn": 12,
+   "status": "completed",
+   "title": "J106 Boon Lay Station — Site Preparation (Earthworks)",
+   "scope": "civil",
+   "value": 141609.0,
+   "owner": "LTA",
+   "client": "Jia Yuan Engineering"
+  },
+  {
+   "sn": 13,
+   "status": "completed",
+   "title": "Sentosa Golf Club, Serapong Course — Upgrading, Civil Works",
+   "scope": "civil",
+   "value": 560107.5,
+   "owner": "Sentosa Golf Club",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 14,
+   "status": "completed",
+   "title": "CleanTech Park — Earthworks",
+   "scope": "civil",
+   "value": 300000.0,
+   "owner": "Hock Lim Engineering",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 15,
+   "status": "completed",
+   "title": "Singapore Island Country Club, Island Club Road — Civil Works incl. Earthworks & RC Retaining Wall",
+   "scope": "civil",
+   "value": 7344396.0,
+   "owner": "Singapore Island Country Club",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 16,
+   "status": "completed",
+   "title": "Park Connectors (NParks) Term Contract — Nature Trail Works",
+   "scope": "landscape",
+   "value": 400200.0,
+   "owner": "NParks",
+   "client": "Digo Building Construction"
+  },
+  {
+   "sn": 17,
+   "status": "completed",
+   "title": "Tanah Merah Country Club, Garden Course — Civil & Structural incl. Earthworks & RC Retaining Wall",
+   "scope": "civil",
+   "value": 4736540.0,
+   "owner": "Tanah Merah Country Club",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 18,
+   "status": "completed",
+   "title": "Seletar Country Club — Civil Works incl. Sheet Piling for Waterfall & Pond",
+   "scope": "civil",
+   "value": 5980785.0,
+   "owner": "Seletar Country Club",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 19,
+   "status": "completed",
+   "title": "NTU Yunnan Garden — Pond Liner Works",
+   "scope": "civil",
+   "value": 550678.0,
+   "owner": "NTU",
+   "client": "Zheng Keng / TEHC International"
+  },
+  {
+   "sn": 20,
+   "status": "completed",
+   "title": "Faber Walk — Milling & Resurfacing (Asphalt Premix)",
+   "scope": "road",
+   "value": 72210.0,
+   "owner": "LTA / Waterfront @ Faber",
+   "client": "World Class Land"
+  },
+  {
+   "sn": 21,
+   "status": "completed",
+   "title": "NSRCC — Reconstruction of Holes 16 & 17, RC Works",
+   "scope": "civil",
+   "value": 201540.0,
+   "owner": "NSRCC",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 22,
+   "status": "completed",
+   "title": "TMCC Tampines Course Club House — External Works, Asphalt Premix & Drainage",
+   "scope": "road",
+   "value": 569730.0,
+   "owner": "Tanah Merah Country Club",
+   "client": "SH Design & Build"
+  },
+  {
+   "sn": 23,
+   "status": "completed",
+   "title": "Calshot Road — Demolition & RC Works",
+   "scope": "demolition",
+   "value": 365000.0,
+   "owner": "Eagle Asia",
+   "client": "Fong Soon Engineering"
+  },
+  {
+   "sn": 24,
+   "status": "completed",
+   "title": "Gardens by the Bay (Bay South) — Tropical Serene Garden, Civil & Structural Works",
+   "scope": "landscape",
+   "value": 663680.0,
+   "owner": "Gardens by the Bay",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 25,
+   "status": "completed",
+   "title": "Nee Soon Pumping Station — Demolition incl. Earthworks & ERSS",
+   "scope": "demolition",
+   "value": 2580000.0,
+   "owner": "PUB",
+   "client": "PUB"
+  },
+  {
+   "sn": 26,
+   "status": "completed",
+   "title": "Tanah Merah Country Club, Tampines Course — RC Works incl. Sheet Piling for Waterfall & Pond",
+   "scope": "civil",
+   "value": 4845992.0,
+   "owner": "Tanah Merah Country Club",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 27,
+   "status": "completed",
+   "title": "Changkat Primary School, Simei Street 3 — A&A Earthworks",
+   "scope": "civil",
+   "value": 38000.0,
+   "owner": "MOE",
+   "client": "NewCon Builders"
+  },
+  {
+   "sn": 28,
+   "status": "completed",
+   "title": "Marina LTA T302, Thomson-East Coast Line — Premix at Maintenance Road & Drainage",
+   "scope": "road",
+   "value": 478419.0,
+   "owner": "LTA",
+   "client": "China Railway First Group"
+  },
+  {
+   "sn": 29,
+   "status": "completed",
+   "title": "Sentosa Golf Club, Tanjong Course — Earthworks & RC Works (Bridge & Tunnel)",
+   "scope": "civil",
+   "value": 7412842.0,
+   "owner": "Sentosa Golf Club",
+   "client": "TEHC International"
+  },
+  {
+   "sn": 30,
+   "status": "completed",
+   "title": "Kingfisher Wetland, Bay South, Gardens by the Bay — Design & Build",
+   "scope": "landscape",
+   "value": 436500.0,
+   "owner": "Gardens by the Bay",
+   "client": "TEHC International"
+  }
+ ]
 }

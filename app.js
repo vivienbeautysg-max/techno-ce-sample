@@ -19,9 +19,9 @@
   // ---------- Hero slideshow ----------
   const slides=$$('.hero__slide');
   const captions=[
-    {n:'01 / 03', t:'Deep-basement removal in sheet-piled ERSS — Mugliston Park Pumping Station, PUB'},
-    {n:'02 / 03', t:'ABC Waters at Jurong Canal — PUB'},
-    {n:'03 / 03', t:'Magical Bridge Playground — Sun Plaza Park, NParks'}
+    {n:'01 / 03', t:'Magical Bridge Playground — Sun Plaza Park, NParks'},
+    {n:'02 / 03', t:'Deep-basement removal in sheet-piled ERSS — Mugliston Park Pumping Station, PUB'},
+    {n:'03 / 03', t:'Kingfisher Wetland — Bay South, Gardens by the Bay'}
   ];
   const capEl=$('#heroCaption');
   let idx=0;
@@ -108,7 +108,7 @@
         <header class="register__head">
           <div>
             <span class="register__tag">FULL PROJECT REGISTER</span>
-            <h2 id="regTitle">${data.projects.length} projects · S$${(data.projects.reduce((s,p)=>s+p.value,0)/1e6).toFixed(1)}M total</h2>
+            <h2 id="regTitle">${data.projects.length} contracts · S$${(data.projects.reduce((s,p)=>s+p.value,0)/1e6).toFixed(1)}M total</h2>
           </div>
           <button class="register__close" type="button">CLOSE <span aria-hidden="true">✕</span></button>
         </header>
@@ -116,9 +116,9 @@
           ${['all','demolition','civil','piling','landscape','road'].map(s=>`<button data-scope="${s}" class="${s==='all'?'is-on':''}">${s.toUpperCase()}</button>`).join('')}
         </div>
         <div class="register__list">
-          ${data.projects.sort((a,b)=>b.value-a.value).map(p=>`
+          ${data.projects.sort((a,b)=>a.sn-b.sn).map(p=>`
             <article class="reg-row" data-scope="${p.scope}">
-              <span class="reg-row__year">${p.year}</span>
+              <span class="reg-row__year">No.&nbsp;${String(p.sn).padStart(2,'0')}</span>
               <span class="reg-row__title">${p.title}</span>
               <span class="reg-row__owner">${p.owner}</span>
               <span class="reg-row__value">${fmt(p.value)}</span>

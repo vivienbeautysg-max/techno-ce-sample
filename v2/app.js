@@ -52,7 +52,7 @@
         <header class="register__head">
           <div>
             <span class="register__tag">FULL PROJECT REGISTER</span>
-            <h2 id="regTitle2">${d.projects.length} projects · S$${(d.projects.reduce((s,p)=>s+p.value,0)/1e6).toFixed(1)}M total value</h2>
+            <h2 id="regTitle2">${d.projects.length} contracts · S$${(d.projects.reduce((s,p)=>s+p.value,0)/1e6).toFixed(1)}M total</h2>
           </div>
           <button class="register__close" type="button">CLOSE <span aria-hidden="true">✕</span></button>
         </header>
@@ -60,9 +60,9 @@
           ${['all','demolition','civil','piling','landscape','road'].map(s=>`<button data-scope="${s}" class="${s==='all'?'is-on':''}">${s.toUpperCase()}</button>`).join('')}
         </div>
         <div class="register__list">
-          ${d.projects.sort((a,b)=>b.value-a.value).map(p=>`
+          ${d.projects.sort((a,b)=>a.sn-b.sn).map(p=>`
             <article class="reg-row" data-scope="${p.scope}">
-              <span class="reg-row__year">${p.year}</span>
+              <span class="reg-row__year">No.&nbsp;${String(p.sn).padStart(2,'0')}</span>
               <span class="reg-row__title">${p.title}</span>
               <span class="reg-row__owner">${p.owner}</span>
               <span class="reg-row__value">${fmt(p.value)}</span>

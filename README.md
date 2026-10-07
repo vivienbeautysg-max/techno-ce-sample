@@ -19,8 +19,13 @@ No golf-course photography (client request: it implies golf-course work).
 - `premium.js` — shared premium motion: intro preloader, scroll progress, reveal
   choreography, hero parallax, scrollspy, magnetic buttons, custom cursor.
   (Variant B overrides reveal targets via `window.TCE_REVEAL_GROUPS`.)
-- `projects.json` — shared full project register
-- `img/` — curated photography (sources: `X:\TCE\_extracted\` from the company profile)
+- `projects.json` — shared full project register (30 contracts, transcribed from the
+  Company Profile 2026 Revision 1, pp. 31–33)
+- `img/` — curated photography. Sources: `X:\TCE\TCE_Company Profile_2026_R1.pdf`
+  (extracted to `X:\TCE\_extracted_r1\`) and higher-resolution originals of the same
+  photos from the Mar 2026 profile (`X:\TCE\_extracted\`). Sizes: hero ≤1920w,
+  speciality tiles 4:3 ≤960w (`t-*.jpg`), project cards 4:5 ≤900×1125 (`c-*.jpg`);
+  never upscaled.
 
 > The `.html` pages are **generated** by the `build.py` scripts. Edit content in
 > the generator, then re-run it — don't hand-edit the pages.
@@ -31,9 +36,7 @@ users get instant content, no looping). The intro plays once per session. If JS
 fails to load, content is never hidden.
 
 ## Placeholder content (replace with real assets)
-- **Projects** — MSPS, JPS and BNF cards have no site photos yet ("Site photos to come").
-- **Certificates** — on-site images are from the Mar 2026 company profile; ISO certs show
-  recertification due 10 May 2026, Green & Gracious expiry 16 May 2024 — replace with current ones.
 - **Newsroom** posts — drawn from real milestones, but copy is draft.
 - **Careers** roles — sample openings, to be confirmed by Techno CE.
-- Improved Vision / Mission / Motto / Core Values — proposed drafts, under client review.
+- Certificates on site are the renewed ones from the R1 profile (ISO to May 2029,
+  bizSAFE Star to May 2029, Green & Gracious to May 2027, PWM to Apr 2027).
