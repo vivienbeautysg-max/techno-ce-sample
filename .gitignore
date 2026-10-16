@@ -1,7 +1,7 @@
 node_modules/
 package.json
 package-lock.json
-_qa.js
+_qa*.js
 qa-*.jpg
 qa-*.png
 r1-*.jpg
