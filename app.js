@@ -1,114 +1,58 @@
-/* TECHNO CE — minimal motion */
+/* TECHNO CE — Variant B */
 (()=>{
   const $=(s,r=document)=>r.querySelector(s);
   const $$=(s,r=document)=>[...r.querySelectorAll(s)];
 
-  // ---------- Nav: pin background after scroll past the top band (hero or page header) ----------
-  const nav=$('#nav');
-  const band=$('.hero, .pagehead');
-  const onScroll=()=>{
-    const trigger = band ? band.offsetHeight - 72 : window.innerHeight * 0.85;
-    nav.classList.toggle('is-pinned', window.scrollY > trigger);
-  };
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
   // ---------- Hero mask-reveal on load ----------
   requestAnimationFrame(()=>document.querySelector('.hero')?.classList.add('is-loaded'));
 
-  // ---------- Hero slideshow ----------
-  const slides=$$('.hero__slide');
-  const captions=[
-    {n:'01 / 03', t:'Kingfisher Wetland — Bay South, Gardens by the Bay'},
-    {n:'02 / 03', t:'Tampines Boulevard Park — NParks'},
-    {n:'03 / 03', t:'Shelters along the estate spine — JTC Bulim Phase 1'}
-  ];
-  const capEl=$('#heroCaption');
-  let idx=0;
-  if(slides.length>1 && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  // ---------- Hero crossfade ----------
+  const hImgs=$$('.hero__img');
+  if(hImgs.length>1 && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    let hi=0;
     setInterval(()=>{
-      slides[idx].classList.remove('is-active');
-      idx=(idx+1)%slides.length;
-      slides[idx].classList.add('is-active');
-      if(capEl){
-        capEl.querySelector('.caption-num').textContent=captions[idx].n;
-        capEl.querySelector('.caption-text').textContent=captions[idx].t;
-      }
-    }, 6000);
+      hImgs[hi].classList.remove('is-on');
+      hi=(hi+1)%hImgs.length;
+      hImgs[hi].classList.add('is-on');
+    },5500);
   }
 
-  // ---------- Counter animation (engineer-precision feel) ----------
-  const counters=$$('[data-counter]');
-  const fmtNum=(v,decimals=0)=>{
-    if(decimals>0){
-      const fixed=v.toFixed(decimals);
-      const [whole,frac]=fixed.split('.');
-      return parseInt(whole,10).toLocaleString()+'.'+frac;
-    }
-    return Math.round(v).toLocaleString();
-  };
-  const animateCount=(el)=>{
-    const target=parseFloat(el.dataset.counter);
-    const decimals=parseInt(el.dataset.decimals||'0',10);
-    el.style.fontVariantNumeric='tabular-nums lining-nums';
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-      el.textContent=fmtNum(target,decimals);return;
-    }
-    const dur=1900;const t0=performance.now();
-    const tick=(t)=>{
-      const p=Math.min((t-t0)/dur,1);
-      const eased=1-Math.pow(1-p,4);
-      el.textContent=fmtNum(target*eased,decimals);
-      if(p<1) requestAnimationFrame(tick);
-      else el.textContent=fmtNum(target,decimals);
-    };
-    requestAnimationFrame(tick);
-  };
-  const countObs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        animateCount(e.target);
-        countObs.unobserve(e.target);
-      }
+  // ---------- Scroll reveal handled in premium.js (shared motion layer) ----------
+
+  // ---------- Mobile burger ----------
+  const burger=$('#burger'),navLinks=$('#navLinks');
+  if(burger&&navLinks){
+    burger.addEventListener('click',()=>{
+      const open=navLinks.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded',open);
+      burger.setAttribute('aria-label',open?'Close menu':'Open menu');
     });
-  },{threshold:0.4});
-  counters.forEach(c=>countObs.observe(c));
-
-  // ---------- Rule (measurement line) reveal ----------
-  const rules=$$('.rule:not(.hero__rule)');
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
-    const ruleObs=new IntersectionObserver((es)=>{
-      es.forEach(e=>{
-        if(e.isIntersecting){e.target.classList.add('is-in');ruleObs.unobserve(e.target);}
-      });
-    },{threshold:0.5});
-    rules.forEach(r=>ruleObs.observe(r));
-  } else {
-    rules.forEach(r=>r.classList.add('is-in'));
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      navLinks.classList.remove('is-open');
+      burger.setAttribute('aria-expanded','false');
+    }));
   }
 
-  // ---------- Scroll reveal handled in premium.js (upgraded motion layer) ----------
-
-  // ---------- Projects data binding (full register modal) ----------
-  let projectData=null;
+  // ---------- Project register ----------
+  let data=null;
   const fmt=v=>'S$'+(v/1000>=1000?(v/1000000).toFixed(2)+'M':Math.round(v/1000)+'K');
-  const loadProjects=async()=>{
-    if(projectData) return projectData;
+  const load=async()=>{
+    if(data) return data;
     const r=await fetch('projects.json');
-    projectData=await r.json();
-    return projectData;
+    data=await r.json();
+    return data;
   };
-  const openRegister=async()=>{
-    const data=await loadProjects();
+  const open=async()=>{
+    const d=await load();
     const trigger=document.activeElement;
     const dlg=document.createElement('div');
     dlg.className='register';
     dlg.innerHTML=`
-      <div class="register__sheet" role="dialog" aria-modal="true" aria-labelledby="regTitle">
+      <div class="register__sheet" role="dialog" aria-modal="true" aria-labelledby="regTitle2">
         <header class="register__head">
           <div>
             <span class="register__tag">FULL PROJECT REGISTER</span>
-            <h2 id="regTitle">${data.projects.length} contracts · S$${(data.projects.reduce((s,p)=>s+p.value,0)/1e6).toFixed(1)}M total</h2>
+            <h2 id="regTitle2">${d.projects.length} contracts · S$${(d.projects.reduce((s,p)=>s+p.value,0)/1e6).toFixed(1)}M total</h2>
           </div>
           <button class="register__close" type="button">CLOSE <span aria-hidden="true">✕</span></button>
         </header>
@@ -116,7 +60,7 @@
           ${['all','demolition','civil','piling','landscape','road'].map(s=>`<button data-scope="${s}" class="${s==='all'?'is-on':''}">${s.toUpperCase()}</button>`).join('')}
         </div>
         <div class="register__list">
-          ${data.projects.sort((a,b)=>a.sn-b.sn).map(p=>`
+          ${d.projects.sort((a,b)=>a.sn-b.sn).map(p=>`
             <article class="reg-row" data-scope="${p.scope}">
               <span class="reg-row__year">No.&nbsp;${String(p.sn).padStart(2,'0')}</span>
               <span class="reg-row__title">${p.title}</span>
@@ -126,7 +70,8 @@
             </article>`).join('')}
         </div>
         <footer class="register__foot">
-          UEN 200210947C · Verify on <a href="https://www1.bca.gov.sg/bca-directory" target="_blank" rel="noopener">BCA Directory</a>
+          <span>UEN 200210947C</span>
+          <span>Verify on <a href="https://www1.bca.gov.sg/bca-directory" target="_blank" rel="noopener">BCA Directory</a></span>
         </footer>
       </div>`;
     document.body.appendChild(dlg);
@@ -142,7 +87,8 @@
     const onKey=(e)=>{
       if(e.key==='Escape') close();
       else if(e.key==='Tab'){
-        const f=focusables();if(!f.length) return;
+        const f=focusables();
+        if(!f.length) return;
         const first=f[0],last=f[f.length-1];
         if(e.shiftKey && document.activeElement===first){last.focus();e.preventDefault();}
         else if(!e.shiftKey && document.activeElement===last){first.focus();e.preventDefault();}
@@ -163,24 +109,5 @@
       });
     });
   };
-  $$('[data-action="register"], .card__sum-link').forEach(el=>{
-    el.addEventListener('click',e=>{e.preventDefault();openRegister();});
-  });
-
-  // ---------- Mobile burger ----------
-  const burger=$('#burger'),navLinks=$('.nav__links');
-  if(burger&&navLinks){
-    burger.setAttribute('aria-expanded','false');
-    burger.setAttribute('aria-label','Open menu');
-    burger.addEventListener('click',()=>{
-      const open=navLinks.classList.toggle('is-open');
-      burger.setAttribute('aria-expanded',open);
-      burger.setAttribute('aria-label',open?'Close menu':'Open menu');
-    });
-    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-      navLinks.classList.remove('is-open');
-      burger.setAttribute('aria-expanded','false');
-      burger.setAttribute('aria-label','Open menu');
-    }));
-  }
+  $$('[data-action="register"]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();open();}));
 })();

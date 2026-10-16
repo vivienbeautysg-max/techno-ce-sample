@@ -11,7 +11,7 @@
 window.TCE_imgAudit = async function (opts) {
   const o = Object.assign({
     pages: ['index.html', 'about.html', 'services.html', 'projects.html', 'newsroom.html', 'careers.html', 'contact.html'],
-    variants: ['', 'v2/'],
+    variants: [''],
     views: [[1280, 800, 1], [1440, 900, 2], [1960, 1895, 1.5], [2560, 1440, 1],
             [1024, 1366, 2], [768, 1024, 2], [430, 932, 3], [375, 812, 3]],
     maxUpscale: 1.25, minVisible: 0.4
