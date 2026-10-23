@@ -14,7 +14,11 @@ Services = four specialities — Civil Engineering, Demolition, Hardscape, Steel
 No golf-course photography (client request: it implies golf-course work).
 
 ## Files
-- `build.py` — generator for all pages + `v2/` redirect stubs (run: `python build.py`)
+- `build.py` — generator for all pages + `v2/` redirect stubs (run: `python build.py`).
+  Its last step runs `tools/asset-stamp.js`, which puts `?v=<first 8 hex of sha256(content)>`
+  on every local CSS/JS reference and on `fetch('projects.json')` in `app.js`, so phones never
+  mix a new page with an old cached stylesheet (GitHub Pages caches every file for 10 min).
+  Never type a version by hand; a push without correct versions is blocked.
 - `style.css` — design system + premium motion layer
 - `app.js` — core JS (hero, counters, register modal, burger, nav pin)
 - `premium.js` — premium motion: intro preloader, scroll progress, reveal

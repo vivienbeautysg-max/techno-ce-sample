@@ -38,7 +38,7 @@
   const fmt=v=>'S$'+(v/1000>=1000?(v/1000000).toFixed(2)+'M':Math.round(v/1000)+'K');
   const load=async()=>{
     if(data) return data;
-    const r=await fetch('projects.json');
+    const r=await fetch('projects.json?v=859f39e0');
     data=await r.json();
     return data;
   };

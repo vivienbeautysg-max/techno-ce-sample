@@ -4,9 +4,9 @@
 Techno CE — site generator ("Quiet Practice", light editorial).
 Formerly Variant B; the client chose it as the site design (Oct 2026).
 The old dark Variant A is kept in git as tag `variant-a-final`.
-Run:  python build.py   (writes the 7 pages + v2/ redirect stubs)
+Run:  python build.py   (writes the 7 pages + v2/ redirect stubs, then stamps ?v=<content hash> on CSS/JS/data)
 """
-import io, os
+import io, os, subprocess
 
 BASE = "https://technoce.com/"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -606,10 +606,18 @@ def write(rel, html):
     print("wrote " + rel, len(html), "bytes")
 
 
+def stamp():
+    # GitHub Pages serves every file with max-age=600. Without a version on the URL a phone can get the
+    # new page with the old style.css/app.js. tools/asset-stamp.js appends ?v=<sha256 of the content, first 8 hex>
+    # to every local CSS/JS reference in the pages and to fetch('projects.json') in app.js — never write it by hand.
+    subprocess.run(["node", os.path.join(HERE, "tools", "asset-stamp.js"), "--write", HERE], check=True)
+
+
 def main():
     for fname, html in PAGES.items():
         write(fname, html)
         write("v2/" + fname, v2_stub(fname))
+    stamp()
 
 
 if __name__ == "__main__":
