@@ -36,7 +36,7 @@ NAV_ITEMS = [
 REVEAL_GROUPS = ('{"r-mask":[".pagehead__title",".cta-band__big",".about__lead",".num__cap",'
     '".values__title",".vmm__col h3",".careers__intro h3",".showcase__lead h3"],'
     '"r-up":[".pagehead__sub",".index__row",".w",".num__grid > div",'
-    '".values__list li",".post",".careers__roles li",".about p",".showcase__lead p",'
+    '".values__list li",".core__list li",".post",".careers__roles li",".about p",".showcase__lead p",'
     '".showcase__chips",".careers__intro p",".careers__perk",".creds__verify"],'
     '"r-img":[],"r-fade":[".creds__grid figure"]}')
 
@@ -397,26 +397,32 @@ CREDS = '''<!-- AWARDS & CERTIFICATIONS -->
 </section>
 '''
 
-VMM = '''<!-- VISION / MISSION / MOTTO -->
+VMM = '''<!-- MOTTO / VISION / MISSION / CORE VALUES (client's wording, 2026-10-23) -->
 <section class="about">
   <header class="sec-head">
     <span class="sec-head__num">—</span>
-    <h2>Vision, Mission &amp; Motto</h2>
+    <h2>Motto, Vision &amp; Mission</h2>
     <span class="sec-head__meta">Who we are</span>
   </header>
   <div class="vmm">
     <div class="vmm__col">
-      <span class="vmm__lbl">Vision</span>
-      <h3>Take pride of our works.</h3>
-    </div>
-    <div class="vmm__col">
-      <span class="vmm__lbl">Mission</span>
-      <h3>The best is yet to come.</h3>
-    </div>
-    <div class="vmm__col">
       <span class="vmm__lbl">Motto</span>
-      <h3><em>Mission possible.</em></h3>
+      <h3>Believe, do it, <em>be proud of&nbsp;it.</em></h3>
     </div>
+    <div class="vmm__col">
+      <span class="vmm__lbl">Vision</span>
+      <h3>One for all, all for one, we are one for everyone.</h3>
+    </div>
+    <div class="vmm__col vmm__col--long">
+      <span class="vmm__lbl">Mission Statement</span>
+      <h3>We strive to provide a better solution for a better job satisfaction to attain a better needs fulfillment.</h3>
+    </div>
+  </div>
+  <div class="core">
+    <span class="vmm__lbl">Core Values</span>
+    <ul class="core__list">
+      <li>Passion</li><li>Positive</li><li>Unity</li><li>Endurance</li><li>Resilient</li>
+    </ul>
   </div>
 </section>
 '''
@@ -444,7 +450,7 @@ STUDIO = '''<!-- STUDIO & PRACTICE -->
     <span class="sec-head__meta">100 Lorong 23 Geylang</span>
   </header>
   <div class="about__grid">
-    <p class="about__lead">Take pride of our works. <i>The best is yet to come.</i> — Mission possible.</p>
+    <p class="about__lead">Believe, do it, <i>be proud of&nbsp;it.</i></p>
     <p>Techno&nbsp;CE&nbsp;Pte&nbsp;Ltd was incorporated on 20&nbsp;December&nbsp;2002 (UEN&nbsp;200210947C). We work from our office at D'Centennial in Geylang — with our own supervisors and our own plant on site. We do not subcontract our project management. We are on the sites we build.</p>
     <p>Our standards are certified to ISO 9001, ISO 14001, ISO 45001 and bizSAFE Star; our conduct on site is recognised by the BCA Green &amp; Gracious Builder Award, in which we hold Merit; and our pay by the Progressive Wage Mark.</p>
   </div>
@@ -530,7 +536,7 @@ PAGES = {
 
  "about.html": page("about",
     "About Us — Techno CE",
-    "Vision, mission, how we work, awards and certifications of Techno CE Pte Ltd — a Singapore civil engineering contractor since 2002.",
+    "Motto, vision, mission, core values, how we work, awards and certifications of Techno CE Pte Ltd — a Singapore civil engineering contractor since 2002.",
     "about.html",
     pagehead("About Us", "A quiet practice,<br>since 2002.",
         "Our own supervisors, our own plant — for public agencies and the main contractors delivering on their behalf.")
