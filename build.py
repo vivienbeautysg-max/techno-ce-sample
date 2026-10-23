@@ -102,6 +102,13 @@ def nav(active):
     ccur = ' class="is-active" aria-current="page"' if active == 'contact' else ''
     out.append(f'    <a href="contact.html"{ccur}>Contact Us</a>')
     out.append('  </nav>')
+    # Mail app tile -> staff webmail (Redfluent Mail at mail.technoce.com)
+    out.append('  <a class="nav__mail" href="https://mail.technoce.com/" aria-label="Techno CE Mail" title="Techno CE Mail"><span class="nav__mail-tile">'
+               '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+               '<rect x="2.25" y="4.75" width="19.5" height="14.5" rx="3.5" fill="#fff" stroke="currentColor" stroke-width="1.35"/>'
+               '<path d="M5 8.25l7 5 7-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'
+               '<path d="M5.25 16.75l4.5-3.5M18.75 16.75l-4.5-3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".35"/>'
+               '</svg></span></a>')
     out.append('  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>')
     out.append('</header>')
     return "\n".join(out)
