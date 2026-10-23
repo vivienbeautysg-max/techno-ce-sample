@@ -8,7 +8,7 @@ Run:  python build.py   (writes the 7 pages + v2/ redirect stubs)
 """
 import io, os
 
-BASE = "https://vivienbeautysg-max.github.io/techno-ce-sample/"
+BASE = "https://technoce.com/"
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 JSONLD = ('{"@context":"https://schema.org","@type":"GeneralContractor",'
