@@ -850,6 +850,7 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:300;letter-spacing:-0.0
 @media screen and (min-width:480px) and (max-width:780px){
   .showcase__grid{grid-template-columns:repeat(2,1fr)}
 }
-/* Headline: "of civil engineering." is one unbreakable line; cap the size so
-   it fits its 620px measure on wide screens (it was clipped from 1600px up). */
-.hero__h{font-size:clamp(3.2rem,7vw,6.3rem)}
+/* Headline: "of civil engineering." is one unbreakable line (~6.2em); cap the size so
+   it fits its 620px measure on wide screens (it was clipped from 1600px up), and so
+   it fits 100vw - 2*pad-x on narrow phones (at 320-390px it widened the page). */
+.hero__h{font-size:min(clamp(3.2rem,7vw,6.3rem), calc((100vw - 2*var(--pad-x)) / 6.6))}
